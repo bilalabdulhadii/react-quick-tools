@@ -3,8 +3,6 @@ import {
     Box,
     Container,
     SwipeableDrawer,
-    List,
-    ListItem,
     ListItemButton,
     ListItemIcon,
     ListItemText,
@@ -12,7 +10,7 @@ import {
     Toolbar,
     Typography,
     IconButton,
-    ListSubheader,
+    Grid,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import toolsList from "../toolsList";
@@ -36,52 +34,22 @@ export default function HomeLayout() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
             sx={{
-                width: { xs: "100vw", sm: 300, md: 300 },
                 maxWidth: "100%",
                 p: 3,
                 boxSizing: "border-box",
             }}
         >
-            <List
-                subheader={
-                    <ListSubheader
-                        sx={{
-                            fontWeight: "bold",
-                            fontSize: "1.2rem",
-                            bgcolor: "transparent",
-                            mb: 1,
-                        }}
-                    >
-                        Tools
-                    </ListSubheader>
-                }
+            <Typography
+                sx={{
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    mb: 2,
+                }}
             >
-                {/* {toolsList
-                    .filter((tool) => tool.isActive)
-                    .map((tool) => (
-                        <ListItem disablePadding key={tool.id}>
-                            <ListItemButton
-                                sx={{
-                                    borderRadius: 1,
-                                    px: 1.5,
-                                    "&:hover": {
-                                        bgcolor: "primary.light",
-                                        color: "primary.contrastText",
-                                    },
-                                }}
-                                component={Link}
-                                to={tool.path}
-                            >
-                                <ListItemIcon
-                                    sx={{ color: "inherit", minWidth: 40 }}
-                                >
-                                    {tool.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={tool.title} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))} */}
+                Quick Tools
+            </Typography>
 
+            <Grid container spacing={1}>
                 {toolsList
                     .filter((tool) => tool.isActive)
                     .map((tool) => {
@@ -90,30 +58,42 @@ export default function HomeLayout() {
                             : tool.path;
 
                         return (
-                            <ListItem disablePadding key={tool.id}>
+                            <Grid
+                                size={{
+                                    sm: 6,
+                                    md: 6,
+                                    lg: 2.4,
+                                    xl: 2.4,
+                                }}
+                                key={tool.id}
+                            >
                                 <ListItemButton
+                                    component={Link}
+                                    to={linkPath}
                                     sx={{
                                         borderRadius: 1,
-                                        px: 1.5,
+                                        bgcolor: "background.paper",
                                         "&:hover": {
                                             bgcolor: "primary.light",
                                             color: "primary.contrastText",
                                         },
                                     }}
-                                    component={Link}
-                                    to={linkPath}
                                 >
                                     <ListItemIcon
-                                        sx={{ color: "inherit", minWidth: 40 }}
+                                        sx={{
+                                            color: "inherit",
+                                            minWidth: 0,
+                                            margin: "0 5px",
+                                        }}
                                     >
                                         {tool.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={tool.title} />
                                 </ListItemButton>
-                            </ListItem>
+                            </Grid>
                         );
                     })}
-            </List>
+            </Grid>
         </Box>
     );
 
@@ -154,7 +134,7 @@ export default function HomeLayout() {
                                 }}
                                 to="/"
                             >
-                                Tools
+                                Quick Tools
                             </Typography>
                         </Toolbar>
                     </AppBar>
