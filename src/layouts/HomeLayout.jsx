@@ -67,29 +67,33 @@ export default function HomeLayout() {
                                 }}
                                 key={tool.id}
                             >
-                                <ListItemButton
+                                <Box
                                     component={Link}
                                     to={linkPath}
                                     sx={{
-                                        borderRadius: 1,
-                                        bgcolor: "background.paper",
-                                        "&:hover": {
-                                            bgcolor: "primary.light",
-                                            color: "primary.contrastText",
-                                        },
+                                        display: "flex",
+                                        justifyContent: "flex-start",
+                                        alignContent: "center",
+                                        gap: "5px",
+                                        textDecoration: "none",
                                     }}
                                 >
-                                    <ListItemIcon
-                                        sx={{
-                                            color: "inherit",
-                                            minWidth: 0,
-                                            margin: "0 5px",
-                                        }}
+                                    <Typography
+                                        variant="body2"
+                                        color="text.secondary"
                                     >
                                         {tool.icon}
-                                    </ListItemIcon>
-                                    <ListItemText primary={tool.title} />
-                                </ListItemButton>
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                        sx={{
+                                            textDecoration: "underline",
+                                        }}
+                                    >
+                                        {tool.title}
+                                    </Typography>
+                                </Box>
                             </Grid>
                         );
                     })}

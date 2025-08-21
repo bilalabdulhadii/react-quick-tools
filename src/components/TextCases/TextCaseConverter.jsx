@@ -16,7 +16,6 @@ export default function TextCaseConverter({ caseType }) {
 
     const handleCopy = () => {
         const converted = convertText(text);
-
         if (!converted || converted.trim() === "") {
             return;
         }
@@ -103,26 +102,32 @@ export default function TextCaseConverter({ caseType }) {
                 onChange={(e) => setText(e.target.value)}
                 sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
             />
+
             <Stack direction="row" spacing={2}>
                 <Button
                     variant="contained"
                     endIcon={<ContentCopyIcon />}
                     onClick={handleCopy}
+                    disabled={!convertText(text)}
                 >
                     Copy
                 </Button>
+                <Button variant="outlined" onClick={() => setText("")}>
+                    Clear
+                </Button>
             </Stack>
+
             <Paper
                 variant="outlined"
                 sx={{
                     width: "100%",
-                    minHeight: 300,
+                    minHeight: "300px",
                     overflowY: "auto",
                 }}
             >
                 <Typography
                     variant="body1"
-                    sx={{ whiteSpace: "pre-wrap", margin: "35px 15px 15px" }}
+                    sx={{ whiteSpace: "pre-wrap", margin: "15px" }}
                 >
                     {convertText(text)}
                 </Typography>

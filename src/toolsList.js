@@ -3,7 +3,20 @@ import Calculator from "./components/MathCalculator/Calculator";
 import AgeCalculator from "./components/AgeCalculator/AgeCalculator";
 import TextCaseConverter from "./components/TextCases/TextCaseConverter";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import TextCounter from "./components/TextCounter/TextCounter";
+import SpaceRemover from "./components/SpaceRemover/SpaceRemover";
+import TextReverser from "./components/TextReverser/TextReverser";
+import PalindromeChecker from "./components/PalindromeChecker/PalindromeChecker";
+import BMICalculator from "./components/BMICalculator/BMICalculator";
+import UnitConverter from "./components/UnitConverter/UnitConverter";
+import PrimeNumberChecker from "./components/PrimeNumberChecker/PrimeNumberChecker";
+import GreatestCommonDivisor from "./components/GreatestCommonDivisor/GreatestCommonDivisor";
+import LeastCommonMultiple from "./components/LeastCommonMultiple/LeastCommonMultiple";
+import StatisticsCalculator from "./components/StatisticsCalculator/StatisticsCalculator";
+import NumberSystemConverter from "./components/NumberSystemConverter/NumberSystemConverter";
+import ColorConverter from "./components/ColorConverter/ColorConverter";
 const toolsList = [
+    // Basic calculator
     {
         id: "calculator",
         title: "Math Calculator",
@@ -13,6 +26,8 @@ const toolsList = [
         description: "",
         isActive: true,
     },
+
+    // Age calculator
     {
         id: "age-calculator",
         title: "Age Calculator",
@@ -23,7 +38,303 @@ const toolsList = [
         isActive: true,
     },
 
-    // Text case tools (nested under 'text-case')
+    // BMI calculator
+    {
+        id: "bmi-calculator",
+        title: "BMI Calculator",
+        path: "bmi-calculator",
+        component: <BMICalculator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Text counter
+    {
+        id: "text-counter",
+        title: "Text Counter",
+        path: "text-counter",
+        component: <TextCounter />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Space remover
+    {
+        id: "space-remover",
+        title: "Space Remover",
+        path: "space-remover",
+        component: <SpaceRemover />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Text reverser
+    {
+        id: "text-reverser",
+        title: "Text Reverser",
+        path: "text-reverser",
+        component: <TextReverser />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Palindrome checker
+    {
+        id: "palindrome-checker",
+        title: "Palindrome Checker",
+        path: "palindrome-checker",
+        component: <PalindromeChecker />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Prime number checker
+    {
+        id: "prime-number-checker",
+        title: "Prime Number Checker",
+        path: "prime-number-checker",
+        component: <PrimeNumberChecker />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Greatest common divisor
+    {
+        id: "greatest-common-divisor",
+        title: "Greatest Common Divisor",
+        path: "greatest-common-divisor",
+        component: <GreatestCommonDivisor />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Least Common Multiple
+    {
+        id: "least-common-multiple",
+        title: "Least Common Multiple",
+        path: "least-common-multiple",
+        component: <LeastCommonMultiple />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Statistics calculator tools
+    {
+        id: "mean-calculator",
+        title: "Mean Calculator",
+        path: "mean-calculator",
+        component: <StatisticsCalculator type="mean" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "statistics-calculator",
+        isActive: true,
+    },
+    {
+        id: "median-calculator",
+        title: "Median Calculator",
+        path: "median-calculator",
+        component: <StatisticsCalculator type="median" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "statistics-calculator",
+        isActive: true,
+    },
+    {
+        id: "mode-calculator",
+        title: "Mode Calculator",
+        path: "mode-calculator",
+        component: <StatisticsCalculator type="mode" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "statistics-calculator",
+        isActive: true,
+    },
+
+    // Number system converters
+    {
+        id: "binary-converter",
+        title: "Binary Converter",
+        path: "binary-converter",
+        component: <NumberSystemConverter numberSystem="binary" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "octal-converter",
+        title: "Octal Converter",
+        path: "octal-converter",
+        component: <NumberSystemConverter numberSystem="octal" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "decimal-converter",
+        title: "Decimal Converter",
+        path: "decimal-converter",
+        component: <NumberSystemConverter numberSystem="decimal" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "hexadecimal-converter",
+        title: "Hexadecimal Converter",
+        path: "hexadecimal-converter",
+        component: <NumberSystemConverter numberSystem="hexadecimal" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+
+    // Color converter tools
+    {
+        id: "hex-converter",
+        title: "HEX Converter",
+        path: "hex-converter",
+        component: <ColorConverter type="hex" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
+        isActive: true,
+    },
+    {
+        id: "rgb-converter",
+        title: "RGB Converter",
+        path: "rgb-converter",
+        component: <ColorConverter type="rgb" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
+        isActive: true,
+    },
+    {
+        id: "hsl-converter",
+        title: "HSL Converter",
+        path: "hsl-converter",
+        component: <ColorConverter type="hsl" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
+        isActive: true,
+    },
+
+    // Unit Converter tools
+    {
+        id: "length-converter",
+        title: "Length Converter",
+        path: "length-converter",
+        component: <UnitConverter unitType="length" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "weight-converter",
+        title: "Weight Converter",
+        path: "weight-converter",
+        component: <UnitConverter unitType="weight" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "volume-converter",
+        title: "Volume Converter",
+        path: "volume-converter",
+        component: <UnitConverter unitType="volume" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "temperature-converter",
+        title: "Temperature Converter",
+        path: "temperature-converter",
+        component: <UnitConverter unitType="temperature" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "speed-converter",
+        title: "Speed Converter",
+        path: "speed-converter",
+        component: <UnitConverter unitType="speed" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "time-converter",
+        title: "Time Converter",
+        path: "time-converter",
+        component: <UnitConverter unitType="time" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "data-converter",
+        title: "Data Converter",
+        path: "data-converter",
+        component: <UnitConverter unitType="data" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "energy-converter",
+        title: "Energy Converter",
+        path: "energy-converter",
+        component: <UnitConverter unitType="energy" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "pressure-converter",
+        title: "Pressure Converter",
+        path: "pressure-converter",
+        component: <UnitConverter unitType="pressure" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
+        id: "area-converter",
+        title: "Area Converter",
+        path: "area-converter",
+        component: <UnitConverter unitType="area" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+
+    // Text case tools
     {
         id: "uppercase",
         title: "Uppercase",
@@ -124,7 +435,6 @@ const toolsList = [
         group: "text-case",
         isActive: true,
     },
-
     {
         id: "kebab-case",
         title: "Kebab Case",

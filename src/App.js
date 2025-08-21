@@ -24,6 +24,81 @@ function App() {
                                 />
                             ))}
 
+                        {/* Parent route for unit-converter tools */}
+                        <Route path="unit-converter">
+                            <Route index element={<h1>unit converter</h1>} />
+                            {toolsList
+                                .filter(
+                                    (tool) =>
+                                        tool.isActive &&
+                                        tool.group === "unit-converter"
+                                )
+                                .map((tool) => (
+                                    <Route
+                                        key={tool.id}
+                                        path={tool.path}
+                                        element={tool.component}
+                                    />
+                                ))}
+                        </Route>
+
+                        {/* Parent route for statistics-calculator tools */}
+                        <Route path="statistics-calculator">
+                            <Route
+                                index
+                                element={<h1>statistics calculator</h1>}
+                            />
+                            {toolsList
+                                .filter(
+                                    (tool) =>
+                                        tool.isActive &&
+                                        tool.group === "statistics-calculator"
+                                )
+                                .map((tool) => (
+                                    <Route
+                                        key={tool.id}
+                                        path={tool.path}
+                                        element={tool.component}
+                                    />
+                                ))}
+                        </Route>
+
+                        {/* Parent route for number-system tools */}
+                        <Route path="number-system">
+                            <Route index element={<h1>number system</h1>} />
+                            {toolsList
+                                .filter(
+                                    (tool) =>
+                                        tool.isActive &&
+                                        tool.group === "number-system"
+                                )
+                                .map((tool) => (
+                                    <Route
+                                        key={tool.id}
+                                        path={tool.path}
+                                        element={tool.component}
+                                    />
+                                ))}
+                        </Route>
+
+                        {/* Parent route for color-converter tools */}
+                        <Route path="color-converter">
+                            <Route index element={<h1>color converter</h1>} />
+                            {toolsList
+                                .filter(
+                                    (tool) =>
+                                        tool.isActive &&
+                                        tool.group === "color-converter"
+                                )
+                                .map((tool) => (
+                                    <Route
+                                        key={tool.id}
+                                        path={tool.path}
+                                        element={tool.component}
+                                    />
+                                ))}
+                        </Route>
+
                         {/* Parent route for text-case tools */}
                         <Route path="text-case">
                             <Route index element={<h1>text cases</h1>} />

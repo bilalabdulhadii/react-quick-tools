@@ -1,0 +1,95 @@
+import { useState } from "react";
+import {
+    Box,
+    TextField,
+    Paper,
+    Typography,
+    Button,
+    Stack,
+} from "@mui/material";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useToast } from "../../contexts/ToastContext";
+
+export default function LeastCommonMultiple() {
+    const [num1, setNum1] = useState("");
+    const [num2, setNum2] = useState("");
+    const { showTimedToast } = useToast();
+
+    // Helper function: GCD
+    const calculateGCD = (a, b) => {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        if (b === 0) return a;
+        return calculateGCD(b, a % b);
+    };
+
+    // Calculate LCM using formula: LCM(a,b) = |a*b| / GCD(a,b)
+    const lcm =
+        num1 && num2 && !isNaN(num1) && !isNaN(num2)
+            ? Math.abs(parseInt(num1) * parseInt(num2)) /
+              calculateGCD(parseInt(num1), parseInt(num2))
+            : null;
+
+    const handleCopy = () => {
+        if (!lcm) return;
+        navigator.clipboard
+            .writeText(lcm)
+            .then(() => showTimedToast("LCM copied!", "success"))
+            .catch(() => showTimedToast("Failed to copy!", "error"));
+    };
+
+    return (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                <TextField
+                    label="Number 1"
+                    variant="outlined"
+                    value={num1}
+                    onChange={(e) => setNum1(e.target.value)}
+                    fullWidth
+                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                />
+                <TextField
+                    label="Number 2"
+                    variant="outlined"
+                    value={num2}
+                    onChange={(e) => setNum2(e.target.value)}
+                    fullWidth
+                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                />
+            </Stack>
+
+            <Stack direction="row" spacing={2}>
+                <Button
+                    variant="contained"
+                    endIcon={<ContentCopyIcon />}
+                    onClick={handleCopy}
+                    disabled={!lcm}
+                >
+                    Copy
+                </Button>
+                <Button
+                    variant="outlined"
+                    onClick={() => {
+                        setNum1("");
+                        setNum2("");
+                    }}
+                >
+                    Clear
+                </Button>
+            </Stack>
+
+            <Paper
+                variant="outlined"
+                sx={{
+                    width: "100%",
+                    minHeight: "300px",
+                }}
+            >
+                <Typography variant="h5" sx={{ margin: "15px" }}>
+                    {lcm !== null ? `LCM: ${lcm}` : ""}
+                </Typography>
+            </Paper>
+        </Box>
+    );
+}
