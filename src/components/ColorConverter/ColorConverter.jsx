@@ -184,6 +184,10 @@ export default function ColorConverter({ type }) {
                                 }}
                                 inputProps={{ min: 0, max: 255 }}
                                 fullWidth
+                                sx={{
+                                    backgroundColor: "#fff",
+                                    borderRadius: "12px",
+                                }}
                             />
                         </Grid>
                     ))}
@@ -206,6 +210,10 @@ export default function ColorConverter({ type }) {
                             }}
                             inputProps={{ min: 0, max: 360 }}
                             fullWidth
+                            sx={{
+                                backgroundColor: "#fff",
+                                borderRadius: "12px",
+                            }}
                         />
                     </Grid>
                     {["s", "l"].map((key) => (
@@ -232,6 +240,10 @@ export default function ColorConverter({ type }) {
                                 }}
                                 inputProps={{ min: 0, max: 100 }}
                                 fullWidth
+                                sx={{
+                                    backgroundColor: "#fff",
+                                    borderRadius: "12px",
+                                }}
                             />
                         </Grid>
                     ))}

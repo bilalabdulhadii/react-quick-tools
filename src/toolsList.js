@@ -15,6 +15,10 @@ import LeastCommonMultiple from "./components/LeastCommonMultiple/LeastCommonMul
 import StatisticsCalculator from "./components/StatisticsCalculator/StatisticsCalculator";
 import NumberSystemConverter from "./components/NumberSystemConverter/NumberSystemConverter";
 import ColorConverter from "./components/ColorConverter/ColorConverter";
+import PasswordGenerator from "./components/PasswordGenerator/PasswordGenerator";
+import LoremIpsumGenerator from "./components/LoremIpsumGenerator/LoremIpsumGenerator";
+import PasswordStrengthChecker from "./components/PasswordStrengthChecker/PasswordStrengthChecker";
+
 const toolsList = [
     // Basic calculator
     {
@@ -93,40 +97,40 @@ const toolsList = [
         isActive: true,
     },
 
-    // Prime number checker
+    // Password generator
     {
-        id: "prime-number-checker",
-        title: "Prime Number Checker",
-        path: "prime-number-checker",
-        component: <PrimeNumberChecker />,
+        id: "password-generator",
+        title: "Password Generator",
+        path: "password-generator",
+        component: <PasswordGenerator />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         isActive: true,
     },
 
-    // Greatest common divisor
+    // Password strength checker
     {
-        id: "greatest-common-divisor",
-        title: "Greatest Common Divisor",
-        path: "greatest-common-divisor",
-        component: <GreatestCommonDivisor />,
+        id: "password-strength-checker",
+        title: "Password Strength Checker",
+        path: "password-strength-checker",
+        component: <PasswordStrengthChecker />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         isActive: true,
     },
 
-    // Least Common Multiple
+    // Lorem ipsum generator
     {
-        id: "least-common-multiple",
-        title: "Least Common Multiple",
-        path: "least-common-multiple",
-        component: <LeastCommonMultiple />,
+        id: "lorem-ipsum-generator",
+        title: "Lorem Ipsum Generator",
+        path: "lorem-ipsum-generator",
+        component: <LoremIpsumGenerator />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         isActive: true,
     },
 
-    // Statistics calculator tools
+    // Math tools
     {
         id: "mean-calculator",
         title: "Mean Calculator",
@@ -134,7 +138,7 @@ const toolsList = [
         component: <StatisticsCalculator type="mean" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
-        group: "statistics-calculator",
+        group: "math-tools",
         isActive: true,
     },
     {
@@ -144,7 +148,7 @@ const toolsList = [
         component: <StatisticsCalculator type="median" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
-        group: "statistics-calculator",
+        group: "math-tools",
         isActive: true,
     },
     {
@@ -154,7 +158,37 @@ const toolsList = [
         component: <StatisticsCalculator type="mode" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
-        group: "statistics-calculator",
+        group: "math-tools",
+        isActive: true,
+    },
+    {
+        id: "greatest-common-divisor",
+        title: "Greatest Common Divisor",
+        path: "greatest-common-divisor",
+        component: <GreatestCommonDivisor />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "math-tools",
+        isActive: true,
+    },
+    {
+        id: "least-common-multiple",
+        title: "Least Common Multiple",
+        path: "least-common-multiple",
+        component: <LeastCommonMultiple />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "math-tools",
+        isActive: true,
+    },
+    {
+        id: "prime-number-checker",
+        title: "Prime Number Checker",
+        path: "prime-number-checker",
+        component: <PrimeNumberChecker />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "math-tools",
         isActive: true,
     },
 

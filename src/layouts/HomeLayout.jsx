@@ -3,9 +3,6 @@ import {
     Box,
     Container,
     SwipeableDrawer,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
     AppBar,
     Toolbar,
     Typography,
@@ -14,10 +11,16 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import toolsList from "../toolsList";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 export default function HomeLayout() {
     const [open, setOpen] = useState(false);
+    const location = useLocation();
+
+    const parts = location.pathname.split("/").filter(Boolean);
+    const lastPart = parts.length > 0 ? parts[parts.length - 1] : "";
+    const matchedTool = toolsList.find((tool) => tool.path === lastPart);
+    const title = matchedTool ? matchedTool.title : "Quick Tools";
 
     const toggleDrawer = (open) => (event) => {
         if (
@@ -128,7 +131,7 @@ export default function HomeLayout() {
                             </IconButton>
                             <Typography
                                 variant="h5"
-                                component={Link}
+                                onClick={() => (window.location.href = "/")}
                                 sx={{
                                     flexGrow: 1,
                                     userSelect: "none",
@@ -136,9 +139,8 @@ export default function HomeLayout() {
                                     textDecoration: "none",
                                     color: "#ffffff",
                                 }}
-                                to="/"
                             >
-                                Quick Tools
+                                {title}
                             </Typography>
                         </Toolbar>
                     </AppBar>

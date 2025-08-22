@@ -4,7 +4,7 @@ import { lightTheme } from "./theme";
 import { Route, Routes } from "react-router-dom";
 import HomeLayout from "./layouts/HomeLayout";
 import toolsList from "./toolsList";
-import Calculator from "./components/MathCalculator/Calculator";
+import ListViewer from "./components/ListViewer";
 
 function App() {
     return (
@@ -12,7 +12,11 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<HomeLayout />}>
-                        <Route index element={<Calculator />} />
+                        <Route
+                            index
+                            element={<ListViewer toolsList={toolsList} />}
+                        />
+
                         {/* Map simple top-level tools */}
                         {toolsList
                             .filter((tool) => tool.isActive && !tool.group)
@@ -26,7 +30,17 @@ function App() {
 
                         {/* Parent route for unit-converter tools */}
                         <Route path="unit-converter">
-                            <Route index element={<h1>unit converter</h1>} />
+                            <Route
+                                index
+                                element={
+                                    <ListViewer
+                                        toolsList={toolsList.filter(
+                                            (tool) =>
+                                                tool.group === "unit-converter"
+                                        )}
+                                    />
+                                }
+                            />
                             {toolsList
                                 .filter(
                                     (tool) =>
@@ -42,17 +56,24 @@ function App() {
                                 ))}
                         </Route>
 
-                        {/* Parent route for statistics-calculator tools */}
-                        <Route path="statistics-calculator">
+                        {/* Parent route for math-tools tools */}
+                        <Route path="math-tools">
                             <Route
                                 index
-                                element={<h1>statistics calculator</h1>}
+                                element={
+                                    <ListViewer
+                                        toolsList={toolsList.filter(
+                                            (tool) =>
+                                                tool.group === "math-tools"
+                                        )}
+                                    />
+                                }
                             />
                             {toolsList
                                 .filter(
                                     (tool) =>
                                         tool.isActive &&
-                                        tool.group === "statistics-calculator"
+                                        tool.group === "math-tools"
                                 )
                                 .map((tool) => (
                                     <Route
@@ -65,7 +86,17 @@ function App() {
 
                         {/* Parent route for number-system tools */}
                         <Route path="number-system">
-                            <Route index element={<h1>number system</h1>} />
+                            <Route
+                                index
+                                element={
+                                    <ListViewer
+                                        toolsList={toolsList.filter(
+                                            (tool) =>
+                                                tool.group === "number-system"
+                                        )}
+                                    />
+                                }
+                            />
                             {toolsList
                                 .filter(
                                     (tool) =>
@@ -83,7 +114,17 @@ function App() {
 
                         {/* Parent route for color-converter tools */}
                         <Route path="color-converter">
-                            <Route index element={<h1>color converter</h1>} />
+                            <Route
+                                index
+                                element={
+                                    <ListViewer
+                                        toolsList={toolsList.filter(
+                                            (tool) =>
+                                                tool.group === "color-converter"
+                                        )}
+                                    />
+                                }
+                            />
                             {toolsList
                                 .filter(
                                     (tool) =>
@@ -101,7 +142,16 @@ function App() {
 
                         {/* Parent route for text-case tools */}
                         <Route path="text-case">
-                            <Route index element={<h1>text cases</h1>} />
+                            <Route
+                                index
+                                element={
+                                    <ListViewer
+                                        toolsList={toolsList.filter(
+                                            (tool) => tool.group === "text-case"
+                                        )}
+                                    />
+                                }
+                            />
                             {toolsList
                                 .filter(
                                     (tool) =>
