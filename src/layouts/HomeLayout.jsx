@@ -15,6 +15,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import toolsList from "../toolsList";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function HomeLayout({ setThemeMode }) {
     const theme = useTheme();
@@ -172,6 +173,7 @@ export default function HomeLayout({ setThemeMode }) {
                     </AppBar>
                     <Outlet />
                 </Container>
+                <Footer />
             </Box>
 
             <SwipeableDrawer
