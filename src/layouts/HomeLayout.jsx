@@ -8,6 +8,7 @@ import {
     Typography,
     IconButton,
     Grid,
+    Avatar,
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -17,6 +18,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import toolsList from "../toolsList";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
+import Logo from "../assets/logo.png";
 
 export default function HomeLayout({ setThemeMode }) {
     const theme = useTheme();
@@ -145,18 +147,32 @@ export default function HomeLayout({ setThemeMode }) {
                             >
                                 <MenuIcon />
                             </IconButton>
-                            <Typography
-                                variant="h5"
+                            <Box
                                 onClick={() => (window.location.href = "/")}
                                 sx={{
-                                    userSelect: "none",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: "5px",
                                     cursor: "pointer",
-                                    textDecoration: "none",
-                                    color: "#ffffff",
                                 }}
                             >
-                                {title}
-                            </Typography>
+                                <Avatar
+                                    alt="Logo"
+                                    src={Logo}
+                                    sx={{ width: 28, height: 28 }}
+                                />
+                                <Typography
+                                    variant="h5"
+                                    sx={{
+                                        userSelect: "none",
+                                        textDecoration: "none",
+                                        color: "#ffffff",
+                                    }}
+                                >
+                                    {title}
+                                </Typography>
+                            </Box>
                             <Box
                                 sx={{
                                     flexGrow: 1,
