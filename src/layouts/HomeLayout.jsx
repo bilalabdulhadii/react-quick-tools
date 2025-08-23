@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import toolsList from "../toolsList";
@@ -47,15 +48,26 @@ export default function HomeLayout({ setThemeMode }) {
                 boxSizing: "border-box",
             }}
         >
-            <Typography
+            <Box
                 sx={{
-                    fontWeight: "bold",
-                    fontSize: "1.2rem",
-                    mb: 2,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                 }}
             >
-                Quick Tools
-            </Typography>
+                <Typography
+                    sx={{
+                        fontWeight: "bold",
+                        fontSize: "1.2rem",
+                        mb: 2,
+                    }}
+                >
+                    Quick Tools
+                </Typography>
+                <IconButton onClick={toggleDrawer(false)}>
+                    <CloseRoundedIcon />
+                </IconButton>
+            </Box>
 
             <Grid container spacing={1}>
                 {toolsList
@@ -67,12 +79,7 @@ export default function HomeLayout({ setThemeMode }) {
 
                         return (
                             <Grid
-                                size={{
-                                    sm: 6,
-                                    md: 6,
-                                    lg: 2.4,
-                                    xl: 2.4,
-                                }}
+                                size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
                                 key={tool.id}
                             >
                                 <Box
