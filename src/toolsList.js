@@ -18,12 +18,14 @@ import ColorConverter from "./components/ColorConverter/ColorConverter";
 import PasswordGenerator from "./components/PasswordGenerator/PasswordGenerator";
 import LoremIpsumGenerator from "./components/LoremIpsumGenerator/LoremIpsumGenerator";
 import PasswordStrengthChecker from "./components/PasswordStrengthChecker/PasswordStrengthChecker";
+import RandomDraw from "./components/RandomDraw/RandomDraw";
+import RockPaperScissors from "./components/RockPaperScissors/RockPaperScissors";
 
 const toolsList = [
     // Basic calculator
     {
         id: "calculator",
-        title: "Math Calculator",
+        title: "Basic Calculator",
         path: "calculator",
         component: <Calculator />,
         icon: <KeyboardArrowRightOutlinedIcon />,
@@ -125,6 +127,28 @@ const toolsList = [
         title: "Lorem Ipsum Generator",
         path: "lorem-ipsum-generator",
         component: <LoremIpsumGenerator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Random draw
+    {
+        id: "random-draw",
+        title: "Random Draw",
+        path: "random-draw",
+        component: <RandomDraw />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // RockPaperScissors
+    {
+        id: "rock-paper-scissors",
+        title: "Rock Paper Scissors",
+        path: "rock-paper-scissors",
+        component: <RockPaperScissors />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         isActive: true,

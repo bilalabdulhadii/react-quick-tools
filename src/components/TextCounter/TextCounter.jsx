@@ -1,4 +1,3 @@
-// TextCounter.jsx
 import { useMemo, useState } from "react";
 import {
     Box,
