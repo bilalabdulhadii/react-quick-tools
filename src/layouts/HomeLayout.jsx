@@ -9,11 +9,15 @@ import {
     IconButton,
     Grid,
 } from "@mui/material";
+import { useTheme } from "@emotion/react";
 import MenuIcon from "@mui/icons-material/Menu";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import toolsList from "../toolsList";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
-export default function HomeLayout() {
+export default function HomeLayout({ setThemeMode }) {
+    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const location = useLocation();
 
@@ -118,7 +122,11 @@ export default function HomeLayout() {
                     sx={{ marginTop: "150px", marginBottom: "150px" }}
                 >
                     <AppBar position="fixed">
-                        <Toolbar>
+                        <Toolbar
+                            sx={{
+                                bgcolor: (theme) => theme.palette.primary.main,
+                            }}
+                        >
                             <IconButton
                                 size="large"
                                 edge="start"
@@ -133,7 +141,6 @@ export default function HomeLayout() {
                                 variant="h5"
                                 onClick={() => (window.location.href = "/")}
                                 sx={{
-                                    flexGrow: 1,
                                     userSelect: "none",
                                     cursor: "pointer",
                                     textDecoration: "none",
@@ -142,6 +149,25 @@ export default function HomeLayout() {
                             >
                                 {title}
                             </Typography>
+                            <Box
+                                sx={{
+                                    flexGrow: 1,
+                                }}
+                            />
+                            <IconButton
+                                size="large"
+                                aria-label="show 17 new notifications"
+                                color="secondary"
+                                onClick={() =>
+                                    setThemeMode(theme.palette.mode !== "dark")
+                                }
+                            >
+                                {theme.palette.mode === "light" ? (
+                                    <DarkModeIcon />
+                                ) : (
+                                    <LightModeIcon />
+                                )}
+                            </IconButton>
                         </Toolbar>
                     </AppBar>
                     <Outlet />

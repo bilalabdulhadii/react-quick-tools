@@ -129,7 +129,7 @@ export default function AgeCalculator() {
 
     return (
         <Box>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" color="text.primary" gutterBottom>
                 Date of Birth
             </Typography>
             <Grid container spacing={2}>
@@ -150,6 +150,10 @@ export default function AgeCalculator() {
                             onChange={(e) =>
                                 setBirth({ ...birth, day: e.target.value })
                             }
+                            sx={{
+                                backgroundColor: (theme) =>
+                                    theme.palette.background.paper,
+                            }}
                             MenuProps={{
                                 PaperProps: {
                                     style: {
@@ -183,6 +187,10 @@ export default function AgeCalculator() {
                             onChange={(e) =>
                                 setBirth({ ...birth, month: e.target.value })
                             }
+                            sx={{
+                                backgroundColor: (theme) =>
+                                    theme.palette.background.paper,
+                            }}
                             MenuProps={{
                                 PaperProps: {
                                     style: {
@@ -216,6 +224,10 @@ export default function AgeCalculator() {
                             onChange={(e) =>
                                 setBirth({ ...birth, year: e.target.value })
                             }
+                            sx={{
+                                backgroundColor: (theme) =>
+                                    theme.palette.background.paper,
+                            }}
                             MenuProps={{
                                 PaperProps: {
                                     style: {
@@ -233,28 +245,17 @@ export default function AgeCalculator() {
                     </FormControl>
                 </Grid>
             </Grid>
-            <Box
-                sx={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "30px",
-                }}
+            <Button
+                variant="contained"
+                disabled={!birth.year || !birth.month || !birth.day}
+                onClick={calculateAge}
+                sx={{ marginTop: "30px" }}
             >
-                <Button
-                    variant="contained"
-                    sx={{ width: "50%" }}
-                    disabled={!birth.year || !birth.month || !birth.day}
-                    onClick={calculateAge}
-                >
-                    Calculate
-                </Button>
-            </Box>
+                Calculate
+            </Button>
             <Box
                 sx={{
                     width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
                     marginTop: "30px",
                 }}
             >

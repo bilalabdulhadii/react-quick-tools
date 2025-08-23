@@ -159,7 +159,10 @@ export default function ColorConverter({ type }) {
                         ),
                     }}
                     fullWidth
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 />
             )}
 
@@ -184,7 +187,7 @@ export default function ColorConverter({ type }) {
                                 inputProps={{ min: 0, max: 255 }}
                                 fullWidth
                                 sx={{
-                                    backgroundColor: "#fff",
+                                    backgroundColor: "background.paper",
                                     borderRadius: "12px",
                                 }}
                             />
@@ -210,7 +213,7 @@ export default function ColorConverter({ type }) {
                             inputProps={{ min: 0, max: 360 }}
                             fullWidth
                             sx={{
-                                backgroundColor: "#fff",
+                                backgroundColor: "background.paper",
                                 borderRadius: "12px",
                             }}
                         />
@@ -240,7 +243,7 @@ export default function ColorConverter({ type }) {
                                 inputProps={{ min: 0, max: 100 }}
                                 fullWidth
                                 sx={{
-                                    backgroundColor: "#fff",
+                                    backgroundColor: "background.paper",
                                     borderRadius: "12px",
                                 }}
                             />
@@ -275,6 +278,7 @@ export default function ColorConverter({ type }) {
                     <Typography
                         variant="h5"
                         sx={{ minWidth: 100 }}
+                        color="text.primary"
                     >{`HEX: #${hex}`}</Typography>
                     <IconButton
                         size="medium"
@@ -293,7 +297,11 @@ export default function ColorConverter({ type }) {
                         gap: "10px",
                     }}
                 >
-                    <Typography variant="h5" sx={{ minWidth: 100 }}>
+                    <Typography
+                        variant="h5"
+                        sx={{ minWidth: 100 }}
+                        color="text.primary"
+                    >
                         {`RGB: rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`}
                     </Typography>
                     <IconButton
@@ -315,7 +323,11 @@ export default function ColorConverter({ type }) {
                         gap: "10px",
                     }}
                 >
-                    <Typography variant="h5" sx={{ minWidth: 100 }}>
+                    <Typography
+                        variant="h5"
+                        sx={{ minWidth: 100 }}
+                        color="text.primary"
+                    >
                         {`HSL: hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`}
                     </Typography>
                     <IconButton

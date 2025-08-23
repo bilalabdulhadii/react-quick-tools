@@ -1,17 +1,37 @@
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { lightTheme } from "./theme";
+import { lightTheme, darkTheme } from "./theme";
 import { Route, Routes } from "react-router-dom";
 import HomeLayout from "./layouts/HomeLayout";
 import toolsList from "./toolsList";
 import ListViewer from "./components/ListViewer";
+import { useState, useEffect } from "react";
 
 function App() {
+    const [darkMode, setDarkMode] = useState(() => {
+        const storedTheme = localStorage.getItem("quick_tools_theme");
+        return storedTheme === "dark";
+    });
+
+    useEffect(() => {
+        const html = document.documentElement;
+        const theme = darkMode ? "dark" : "light";
+        html.setAttribute("data-theme", theme);
+        localStorage.setItem("quick_tools_theme", darkMode ? "dark" : "light");
+    }, [darkMode]);
+
+    const setThemeMode = (isDark) => {
+        setDarkMode(isDark);
+    };
+
     return (
-        <ThemeProvider theme={lightTheme}>
+        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
             <div className="App">
                 <Routes>
-                    <Route path="/" element={<HomeLayout />}>
+                    <Route
+                        path="/"
+                        element={<HomeLayout setThemeMode={setThemeMode} />}
+                    >
                         <Route
                             index
                             element={<ListViewer toolsList={toolsList} />}

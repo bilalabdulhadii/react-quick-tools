@@ -44,7 +44,10 @@ export default function GreatestCommonDivisor() {
                     value={num1}
                     onChange={(e) => setNum1(e.target.value)}
                     fullWidth
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 />
                 <TextField
                     label="Number 2"
@@ -52,7 +55,10 @@ export default function GreatestCommonDivisor() {
                     value={num2}
                     onChange={(e) => setNum2(e.target.value)}
                     fullWidth
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 />
             </Stack>
 

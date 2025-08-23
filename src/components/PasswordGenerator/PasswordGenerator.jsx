@@ -57,7 +57,10 @@ export default function PasswordGenerator() {
                     if (val > 0 && val <= 64) setLength(val);
                 }}
                 inputProps={{ min: 1, max: 64 }}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
             <Stack direction="row" spacing={2}>
                 <Button variant="contained" onClick={generatePassword}>
@@ -81,6 +84,7 @@ export default function PasswordGenerator() {
                             onChange={(e) => setIncludeUpper(e.target.checked)}
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Uppercase"
                 />
                 <FormControlLabel
@@ -90,6 +94,7 @@ export default function PasswordGenerator() {
                             onChange={(e) => setIncludeLower(e.target.checked)}
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Lowercase"
                 />
                 <FormControlLabel
@@ -101,6 +106,7 @@ export default function PasswordGenerator() {
                             }
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Numbers"
                 />
                 <FormControlLabel
@@ -112,6 +118,7 @@ export default function PasswordGenerator() {
                             }
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Symbols"
                 />
             </Stack>

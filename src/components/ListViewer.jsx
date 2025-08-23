@@ -1,4 +1,4 @@
-import { Grid, Card, Typography, Stack, Box } from "@mui/material";
+import { Grid, Typography, Stack, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function ListViewer({ toolsList }) {
@@ -13,7 +13,11 @@ export default function ListViewer({ toolsList }) {
         <Stack spacing={4} sx={{ p: 3 }}>
             {Object.entries(groupedTools).map(([group, tools]) => (
                 <div key={group}>
-                    <Typography variant="h5" sx={{ mb: 2 }}>
+                    <Typography
+                        variant="h5"
+                        color="text.primary"
+                        sx={{ mb: 2 }}
+                    >
                         {group === "Other"
                             ? "General Tools"
                             : group
@@ -37,7 +41,7 @@ export default function ListViewer({ toolsList }) {
                                     size={{ xs: 6, sm: 4, md: 4, lg: 3 }}
                                     key={tool.id}
                                 >
-                                    <Card
+                                    <Box
                                         sx={{
                                             height: "100%",
                                             display: "flex",
@@ -46,6 +50,9 @@ export default function ListViewer({ toolsList }) {
                                             textAlign: "center",
                                             transition: "0.3s",
                                             boxShadow: 1,
+                                            bgcolor: (theme) =>
+                                                theme.palette.background.paper,
+                                            borderRadius: "12px",
                                             "&:hover": {
                                                 transform: "translateY(-3px)",
                                                 boxShadow: 3,
@@ -93,7 +100,7 @@ export default function ListViewer({ toolsList }) {
                                                 </Typography>
                                             )} */}
                                         </Stack>
-                                    </Card>
+                                    </Box>
                                 </Grid>
                             );
                         })}

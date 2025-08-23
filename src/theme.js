@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// Shared settings (typography, shape, overrides)
 const sharedSettings = {
     typography: {
         fontFamily: "Roboto, sans-serif",
@@ -37,10 +36,10 @@ export const lightTheme = createTheme({
     palette: {
         mode: "light",
         primary: {
-            main: "#1976D2", // Blue
+            main: "#1976D2",
         },
         secondary: {
-            main: "#FF9800", // Orange
+            main: "#FF9800",
         },
         background: {
             default: "#F5F5F5",
@@ -59,10 +58,10 @@ export const darkTheme = createTheme({
     palette: {
         mode: "dark",
         primary: {
-            main: "#1976D2", // Blue
+            main: "#1976D2",
         },
         secondary: {
-            main: "#FF9800", // Orange
+            main: "#FF9800",
         },
         background: {
             default: "#121212",

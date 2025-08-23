@@ -12,6 +12,7 @@ export default function DisplayPanel({ input, result }) {
                 alignItems: "flex-end",
                 justifyContent: "flex-end",
                 position: "relative",
+                bgcolor: "background.default",
             }}
         >
             <Box

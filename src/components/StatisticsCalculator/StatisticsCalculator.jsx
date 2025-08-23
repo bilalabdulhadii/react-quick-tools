@@ -73,7 +73,7 @@ export default function StatisticsCalculator({ type }) {
                 fullWidth
                 value={numbers}
                 onChange={(e) => setNumbers(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{ backgroundColor: "background.paper", borderRadius: "12px" }}
             />
 
             <Stack direction="row" spacing={2}>

@@ -65,9 +65,6 @@ export default function LoremIpsumGenerator() {
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-            <Typography variant="h5" align="center">
-                Lorem Ipsum Generator
-            </Typography>
             <FormControl>
                 <InputLabel>Type</InputLabel>
                 <Select
@@ -75,7 +72,10 @@ export default function LoremIpsumGenerator() {
                     label="Type"
                     fullWidth
                     onChange={(e) => setType(e.target.value)}
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 >
                     <MenuItem value="characters">Characters</MenuItem>
                     <MenuItem value="paragraphs">Paragraphs</MenuItem>
@@ -90,7 +90,10 @@ export default function LoremIpsumGenerator() {
                 value={count}
                 onChange={(e) => setCount(Math.max(1, e.target.value))}
                 inputProps={{ min: 1 }}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
             <Stack direction="row" spacing={2} alignItems="center">
                 <Button variant="contained" onClick={generateLorem}>

@@ -48,7 +48,10 @@ export default function RandomDraw() {
                 value={total}
                 fullWidth
                 onChange={(e) => setTotal(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
             <Stack direction="row" spacing={2} alignItems="center" mb={2}>
                 <Button variant="contained" onClick={handleSetNumbers}>
@@ -102,8 +105,12 @@ export default function RandomDraw() {
             </Paper>
 
             <Box mb={2}>
-                <Typography variant="h6">Remaining Numbers:</Typography>
-                <Typography>{remaining.join(", ") || "None left"}</Typography>
+                <Typography variant="h6" color="text.primary">
+                    Remaining Numbers:
+                </Typography>
+                <Typography color="text.primary">
+                    {remaining.join(", ") || "None left"}
+                </Typography>
             </Box>
         </Box>
     );

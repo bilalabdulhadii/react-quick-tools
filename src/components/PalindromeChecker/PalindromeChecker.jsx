@@ -21,7 +21,7 @@ export default function PalindromeChecker() {
     };
 
     const handleCopy = () => {
-        if (!text || isNaN(text)) return;
+        if (!text) return;
         const resultText = checkPalindrome(text)
             ? `${text} is a palindrome`
             : `${text} is not a palindrome`;
@@ -43,7 +43,7 @@ export default function PalindromeChecker() {
                 variant="outlined"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{ backgroundColor: "background.paper", borderRadius: "12px" }}
             />
 
             <Stack direction="row" spacing={2}>
@@ -51,7 +51,7 @@ export default function PalindromeChecker() {
                     variant="contained"
                     endIcon={<ContentCopyIcon />}
                     onClick={handleCopy}
-                    disabled={!text || isNaN(text)}
+                    disabled={!text}
                 >
                     Copy
                 </Button>

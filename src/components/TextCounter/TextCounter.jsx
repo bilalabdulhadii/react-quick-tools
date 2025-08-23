@@ -56,11 +56,14 @@ export default function TextCounter() {
                 fullWidth
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
 
             <FormControlLabel
-                sx={{}}
+                sx={{ color: "text.primary" }}
                 control={
                     <Checkbox
                         checked={excludeSpaces}

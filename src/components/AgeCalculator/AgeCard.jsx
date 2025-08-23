@@ -4,38 +4,46 @@ import { useToast } from "../../contexts/ToastContext";
 
 export default function AgeCard({ age }) {
     return (
-        <Paper elevation={3} sx={{ p: 4, mt: 4, borderRadius: 4 }}>
-            <Typography variant="h5" gutterBottom>
-                🎉 Age Summary
-            </Typography>
-
-            {age.age ? (
-                <AgeSummary age={age.age} />
-            ) : (
-                <Typography variant="h5" color="primary" gutterBottom>
-                    —
+        <Paper
+            variant="outlined"
+            sx={{
+                width: "100%",
+                minHeight: "300px",
+            }}
+        >
+            <Box sx={{ margin: "15px" }}>
+                <Typography variant="h5" gutterBottom>
+                    🎉 Age Summary
                 </Typography>
-            )}
 
-            <Grid container spacing={2}>
-                <GridItem label="Years" value={age.year} />
-                <GridItem label="Months" value={age.month} />
-                <GridItem label="Days" value={age.day} />
-                <GridItem label="Weeks" value={age.week} />
-                <GridItem label="Hours" value={age.hour} />
-                <GridItem label="Minutes" value={age.minute} />
+                {age.age ? (
+                    <AgeSummary age={age.age} />
+                ) : (
+                    <Typography variant="h5" color="primary" gutterBottom>
+                        —
+                    </Typography>
+                )}
 
-                <Grid size={12}>
-                    <InfoBox
-                        label="Next Birthday In"
-                        value={
-                            age.nextBirthdayMonth && age.nextBirthdayDay
-                                ? `${age.nextBirthdayMonth} months ${age.nextBirthdayDay} days`
-                                : "—"
-                        }
-                    />
+                <Grid container spacing={2}>
+                    <GridItem label="Years" value={age.year} />
+                    <GridItem label="Months" value={age.month} />
+                    <GridItem label="Days" value={age.day} />
+                    <GridItem label="Weeks" value={age.week} />
+                    <GridItem label="Hours" value={age.hour} />
+                    <GridItem label="Minutes" value={age.minute} />
+
+                    <Grid size={12}>
+                        <InfoBox
+                            label="Next Birthday In"
+                            value={
+                                age.nextBirthdayMonth && age.nextBirthdayDay
+                                    ? `${age.nextBirthdayMonth} months ${age.nextBirthdayDay} days`
+                                    : "—"
+                            }
+                        />
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </Paper>
     );
 }
@@ -68,7 +76,11 @@ const AgeSummary = ({ age }) => {
 
     return (
         <Stack direction="row" alignItems="center" spacing={1}>
-            <Typography variant="h3" color="primary" sx={{padding: "20px 0 30px"}}>
+            <Typography
+                variant="h3"
+                color="primary"
+                sx={{ padding: "20px 0 30px" }}
+            >
                 {age}
             </Typography>
             <IconButton onClick={handleCopy} size="small">
@@ -90,8 +102,6 @@ const InfoBox = ({ label, value }) => (
         <Typography variant="subtitle2" color="text.secondary">
             {label}
         </Typography>
-        <Typography variant="h6">
-            {value !== "" ? value : "—"}
-        </Typography>
+        <Typography variant="h6">{value !== "" ? value : "—"}</Typography>
     </Box>
 );

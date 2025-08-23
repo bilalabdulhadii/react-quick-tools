@@ -89,6 +89,10 @@ export default function PasswordStrengthChecker() {
                 onChange={(e) => setPassword(e.target.value)}
                 fullWidth
                 autoComplete={false}
+                sx={{
+                    bgcolor: (theme) => theme.palette.background.paper,
+                    borderRadius: "12px",
+                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -122,7 +126,7 @@ export default function PasswordStrengthChecker() {
                 <>
                     {/* Strength Bar */}
                     <Box sx={{ mt: 2 }}>
-                        <Typography variant="body2" gutterBottom>
+                        <Typography variant="body2" color="text.primary" gutterBottom>
                             Strength: {getStrengthLabel()}
                         </Typography>
                         <LinearProgress

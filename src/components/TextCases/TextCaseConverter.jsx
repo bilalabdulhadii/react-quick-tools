@@ -100,7 +100,10 @@ export default function TextCaseConverter({ caseType }) {
                 variant="outlined"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
 
             <Stack direction="row" spacing={2}>

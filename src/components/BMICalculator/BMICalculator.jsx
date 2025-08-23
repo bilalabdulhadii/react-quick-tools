@@ -68,6 +68,7 @@ export default function BMICalculator() {
                         onChange={(e) => setIsMetric(e.target.checked)}
                     />
                 }
+                sx={{ color: "text.primary" }}
                 label={isMetric ? "Metric (kg / cm)" : "Imperial (lbs / in)"}
             />
 
@@ -77,7 +78,10 @@ export default function BMICalculator() {
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
                 fullWidth
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: (theme) => theme.palette.background.paper,
+                    borderRadius: "12px",
+                }}
             />
 
             <TextField
@@ -86,7 +90,10 @@ export default function BMICalculator() {
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
                 fullWidth
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: (theme) => theme.palette.background.paper,
+                    borderRadius: "12px",
+                }}
             />
 
             <Stack direction="row" spacing={2}>

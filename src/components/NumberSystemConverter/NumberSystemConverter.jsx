@@ -128,7 +128,10 @@ export default function NumberSystemConverter({ numberSystem }) {
                             options.find((o) => o.label === e.target.value)
                         )
                     }
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 >
                     {options.map((o) => (
                         <MenuItem key={o.label} value={o.label}>
@@ -145,7 +148,10 @@ export default function NumberSystemConverter({ numberSystem }) {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     fullWidth
-                    sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                    sx={{
+                        backgroundColor: "background.paper",
+                        borderRadius: "12px",
+                    }}
                 />
                 <IconButton onClick={() => setReverse(!reverse)}>
                     <SwapHorizIcon />

@@ -16,7 +16,6 @@ export default function HistoryModal({ openModal, onClose }) {
         left: "50%",
         transform: "translate(-50%, -50%)",
         bgcolor: "background.paper",
-        border: "1px solid #ccc",
         boxShadow: 24,
         p: 4,
         borderRadius: "12px",
@@ -35,13 +34,13 @@ export default function HistoryModal({ openModal, onClose }) {
                     sx={{
                         fontWeight: "bold",
                         mb: 3,
-                        borderBottom: "1px solid #ddd",
+                        borderBottom: "1px solid",
                         pb: 2,
                         display: "flex",
                         justifyContent: "space-between",
                     }}
                 >
-                    <Typography id="modal-modal-title" variant="h5">
+                    <Typography color="text.primary" id="modal-modal-title" variant="h5">
                         Calculation History
                     </Typography>
                     <IconButton
@@ -73,14 +72,13 @@ export default function HistoryModal({ openModal, onClose }) {
                     {getHistory().length === 0 ? (
                         <Box
                             sx={{
-                                backgroundColor: "#f9f9f9",
+                                backgroundColor: "background.default",
                                 padding: "10px 12px",
                                 borderRadius: "8px",
                                 mb: 1,
-                                border: "1px solid #ddd",
                                 fontSize: "1rem",
                                 fontWeight: 500,
-                                color: "#333",
+                                color: "text.primary",
                                 letterSpacing: "1px",
                                 boxShadow: "1px 1px 3px rgba(0,0,0,0.05)",
                             }}
@@ -97,14 +95,13 @@ export default function HistoryModal({ openModal, onClose }) {
                                 <Box
                                     key={index}
                                     sx={{
-                                        backgroundColor: "#f9f9f9",
+                                        backgroundColor: "background.default",
                                         padding: "10px 12px",
                                         borderRadius: "8px",
                                         mb: 1,
-                                        border: "1px solid #ddd",
                                         fontSize: "1rem",
                                         fontWeight: 500,
-                                        color: "#333",
+                                        color: "text.primary",
                                         letterSpacing: "1px",
                                         boxShadow:
                                             "1px 1px 3px rgba(0,0,0,0.05)",

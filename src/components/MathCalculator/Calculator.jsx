@@ -107,7 +107,7 @@ export default function Home() {
         <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
             <Box
                 sx={{
-                    bgcolor: "#e5e6e7",
+                    bgcolor: "background.paper",
                     padding: "20px",
                     borderRadius: "12px",
                     boxShadow: "5px 5px 0px #a8aaac",

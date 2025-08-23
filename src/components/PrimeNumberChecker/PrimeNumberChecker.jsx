@@ -49,7 +49,10 @@ export default function PrimeNumberChecker() {
                 fullWidth
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
 
             <Stack direction="row" spacing={2}>

@@ -61,7 +61,10 @@ export default function SpaceRemover() {
                 variant="outlined"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
+                sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "12px",
+                }}
             />
 
             <FormGroup row>
@@ -72,6 +75,7 @@ export default function SpaceRemover() {
                             onChange={(e) => setRemoveSpaces(e.target.checked)}
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Remove extra spaces"
                 />
                 <FormControlLabel
@@ -81,6 +85,7 @@ export default function SpaceRemover() {
                             onChange={(e) => setRemoveTabs(e.target.checked)}
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Remove tabs"
                 />
                 <FormControlLabel
@@ -92,6 +97,7 @@ export default function SpaceRemover() {
                             }
                         />
                     }
+                    sx={{ color: "text.primary" }}
                     label="Remove line breaks"
                 />
             </FormGroup>
