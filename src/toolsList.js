@@ -20,6 +20,7 @@ import LoremIpsumGenerator from "./components/LoremIpsumGenerator/LoremIpsumGene
 import PasswordStrengthChecker from "./components/PasswordStrengthChecker/PasswordStrengthChecker";
 import RandomDraw from "./components/RandomDraw/RandomDraw";
 import RockPaperScissors from "./components/RockPaperScissors/RockPaperScissors";
+import Notes from "./components/NotesTool/Notes";
 
 const toolsList = [
     // Basic calculator
@@ -50,6 +51,17 @@ const toolsList = [
         title: "BMI Calculator",
         path: "bmi-calculator",
         component: <BMICalculator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+
+    // Notes
+    {
+        id: "notes",
+        title: "Notes",
+        path: "notes",
+        component: <Notes />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         isActive: true,
