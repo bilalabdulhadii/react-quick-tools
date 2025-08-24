@@ -14,13 +14,14 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-export default function NotesApp() {
+export default function Notes() {
     const [notes, setNotes] = useState([]);
     const [openDrawer, setOpenDrawer] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [isNewNote, setIsNewNote] = useState(false);
     const theme = useTheme();
     const isDarkMode = theme.palette.mode === "dark";
+
     useEffect(() => {
         try {
             const savedNotes = JSON.parse(
@@ -61,18 +62,28 @@ export default function NotesApp() {
     };
 
     const handleCloseDrawer = () => {
+        const updatedNotes = [...notes];
         if (
             isNewNote &&
-            notes[selectedIndex].note.trim() === "" &&
-            notes[selectedIndex].title.trim() === ""
+            updatedNotes[selectedIndex]?.note.trim() === "" &&
+            updatedNotes[selectedIndex]?.title.trim() === ""
         ) {
-            const updatedNotes = [...notes];
             updatedNotes.pop();
             setNotes(updatedNotes);
+        } else if (
+            !isNewNote &&
+            updatedNotes[selectedIndex]?.note.trim() === "" &&
+            updatedNotes[selectedIndex]?.title.trim() === ""
+        ) {
+            updatedNotes.splice(selectedIndex, 1);
+            setNotes(updatedNotes);
         } else {
-            const updatedNotes = [...notes];
             const currentNote = updatedNotes[selectedIndex];
-            if (!currentNote.title.trim() && currentNote.note.trim()) {
+            if (
+                currentNote &&
+                !currentNote.title.trim() &&
+                currentNote.note.trim()
+            ) {
                 currentNote.title = currentNote.note
                     .split(" ")
                     .slice(0, 3)
@@ -80,6 +91,7 @@ export default function NotesApp() {
                 setNotes(updatedNotes);
             }
         }
+
         setOpenDrawer(false);
         setSelectedIndex(null);
         setIsNewNote(false);
