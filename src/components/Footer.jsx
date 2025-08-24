@@ -16,8 +16,8 @@ export default function Footer() {
             }}
         >
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                Copyright © {new Date().getFullYear()} Todo List App - Designed
-                by{" "}
+                Copyright © {new Date().getFullYear()} Quick Tools App -
+                Designed by{" "}
                 <Link
                     href="https://bilalabdulhadi.com"
                     target="_blank"
