@@ -129,7 +129,11 @@ export default function HomeLayout({ setThemeMode }) {
             <Box>
                 <Container
                     maxWidth="md"
-                    sx={{ marginTop: "150px", marginBottom: "150px" }}
+                    sx={{
+                        marginTop: "150px",
+                        marginBottom: "150px",
+                        minHeight: "75vh",
+                    }}
                 >
                     <AppBar position="fixed">
                         <Toolbar

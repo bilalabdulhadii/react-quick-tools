@@ -98,7 +98,6 @@ export default function NotesApp() {
                 display: "flex",
                 flexDirection: "column",
                 gap: 2,
-                minHeight: "75vh",
             }}
         >
             <Box
