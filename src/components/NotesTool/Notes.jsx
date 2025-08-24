@@ -241,6 +241,7 @@ export default function NotesApp() {
                                         variant="standard"
                                         placeholder="title..."
                                         value={notes[selectedIndex].title}
+                                        autoComplete="off"
                                         onChange={(e) =>
                                             handleDrawerChange(
                                                 "title",
@@ -249,6 +250,7 @@ export default function NotesApp() {
                                         }
                                         InputProps={{
                                             maxLength: 50,
+                                            autoComplete: "off",
                                             disableUnderline: true,
                                             sx: {
                                                 fontSize: "1.3rem",
@@ -303,6 +305,7 @@ export default function NotesApp() {
                                         variant="standard"
                                         placeholder="content..."
                                         value={notes[selectedIndex].note}
+                                        autoComplete="off"
                                         onChange={(e) =>
                                             handleDrawerChange(
                                                 "note",
@@ -325,6 +328,7 @@ export default function NotesApp() {
                                             },
                                         }}
                                         InputProps={{
+                                            autoComplete: "off",
                                             disableUnderline: true,
                                         }}
                                     />
