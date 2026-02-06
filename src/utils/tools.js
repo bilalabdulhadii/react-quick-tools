@@ -2,7 +2,11 @@ export const formatGroupTitle = (group) => {
     if (!group) return "";
     return group
         .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .map((word) => {
+            const lower = word.toLowerCase();
+            if (lower === "qr") return "QR";
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
         .join(" ");
 };
 
