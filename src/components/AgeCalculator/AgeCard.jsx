@@ -1,11 +1,11 @@
-import { Box, Grid, Stack, Paper, Typography, IconButton } from "@mui/material";
+import { Box, Grid, Stack, Typography, IconButton } from "@mui/material";
 import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function AgeCard({ age }) {
     return (
-        <Paper
-            variant="outlined"
+        <ToolCard
             sx={{
                 width: "100%",
                 minHeight: "300px",
@@ -44,7 +44,7 @@ export default function AgeCard({ age }) {
                     </Grid>
                 </Grid>
             </Box>
-        </Paper>
+        </ToolCard>
     );
 }
 

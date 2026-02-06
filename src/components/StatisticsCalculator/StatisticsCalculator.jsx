@@ -2,13 +2,13 @@ import { useState } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function StatisticsCalculator({ type }) {
     const [numbers, setNumbers] = useState("");
@@ -90,8 +90,7 @@ export default function StatisticsCalculator({ type }) {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -100,7 +99,7 @@ export default function StatisticsCalculator({ type }) {
                 <Typography variant="h5" sx={{ margin: "15px" }}>
                     {result !== null ? `${result}` : ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

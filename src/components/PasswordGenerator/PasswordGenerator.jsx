@@ -7,10 +7,10 @@ import {
     Stack,
     FormControlLabel,
     Checkbox,
-    Paper,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function PasswordGenerator() {
     const { showTimedToast } = useToast();
@@ -123,8 +123,7 @@ export default function PasswordGenerator() {
                 />
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -137,7 +136,7 @@ export default function PasswordGenerator() {
                 >
                     {password}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

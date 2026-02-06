@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
     TextField,
-    Paper,
     Typography,
     Box,
     Stack,
@@ -9,6 +8,7 @@ import {
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function TextReverser() {
     const [text, setText] = useState("");
@@ -65,8 +65,7 @@ export default function TextReverser() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -82,7 +81,7 @@ export default function TextReverser() {
                 >
                     {reverseText(text)}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

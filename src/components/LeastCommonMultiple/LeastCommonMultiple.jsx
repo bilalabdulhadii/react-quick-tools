@@ -2,13 +2,13 @@ import { useState } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function LeastCommonMultiple() {
     const [num1, setNum1] = useState("");
@@ -85,8 +85,7 @@ export default function LeastCommonMultiple() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -95,7 +94,7 @@ export default function LeastCommonMultiple() {
                 <Typography variant="h5" sx={{ margin: "15px" }}>
                     {lcm !== null ? `LCM: ${lcm}` : ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

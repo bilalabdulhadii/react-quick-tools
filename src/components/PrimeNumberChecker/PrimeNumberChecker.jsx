@@ -3,12 +3,12 @@ import {
     Box,
     TextField,
     Typography,
-    Paper,
     Button,
     Stack,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function PrimeNumberChecker() {
     const [number, setNumber] = useState("");
@@ -69,8 +69,7 @@ export default function PrimeNumberChecker() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -79,7 +78,7 @@ export default function PrimeNumberChecker() {
                 <Typography variant="h5" sx={{ margin: "15px" }}>
                     {result || ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

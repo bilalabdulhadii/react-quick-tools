@@ -9,10 +9,10 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    Paper,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 // Sample lorem ipsum text
 const sampleText =
@@ -112,8 +112,7 @@ export default function LoremIpsumGenerator() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -137,7 +136,7 @@ export default function LoremIpsumGenerator() {
                     </Typography>
                     <Typography variant="body1">{generatedText}</Typography>
                 </Box>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

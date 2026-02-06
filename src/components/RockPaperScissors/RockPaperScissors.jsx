@@ -4,11 +4,11 @@ import {
     Button,
     Box,
     Stack,
-    Paper,
     List,
     ListItem,
     ListItemText,
 } from "@mui/material";
+import ToolCard from "../ToolCard";
 
 const choices = ["Rock", "Paper", "Scissors"];
 
@@ -70,8 +70,7 @@ export default function RockPaperScissors() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                 }}
@@ -92,10 +91,9 @@ export default function RockPaperScissors() {
                         Computer chose: <b>{computerChoice}</b>
                     </Typography>
                 </Stack>
-            </Paper>
+            </ToolCard>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                 }}
@@ -118,7 +116,7 @@ export default function RockPaperScissors() {
                         ))}
                     </List>
                 </Stack>
-            </Paper>
+            </ToolCard>
 
             {/* {history.length > 0 && (
                 

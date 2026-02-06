@@ -1,18 +1,16 @@
-import { Paper, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import ToolCard from "../ToolCard";
 
 export default function DisplayPanel({ input, result }) {
     return (
-        <Paper
-            variant="outlined"
+        <ToolCard
             sx={{
                 padding: "10px",
-                border: "1px solid #aaa",
                 minHeight: "150px",
                 display: "flex",
                 alignItems: "flex-end",
                 justifyContent: "flex-end",
                 position: "relative",
-                bgcolor: "background.default",
             }}
         >
             <Box
@@ -28,6 +26,6 @@ export default function DisplayPanel({ input, result }) {
                 <Typography variant="h3">{result}</Typography>
                 <Typography variant="h4">{input}</Typography>
             </Box>
-        </Paper>
+        </ToolCard>
     );
 }

@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
@@ -15,6 +14,7 @@ import {
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 const conversionOptions = {
     binary: [
@@ -172,8 +172,7 @@ export default function NumberSystemConverter({ numberSystem }) {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -182,7 +181,7 @@ export default function NumberSystemConverter({ numberSystem }) {
                 <Typography variant="h5" sx={{ margin: "15px" }}>
                     {converted || ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

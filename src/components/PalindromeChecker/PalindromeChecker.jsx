@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
     TextField,
-    Paper,
     Typography,
     Box,
     Stack,
@@ -9,6 +8,7 @@ import {
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function PalindromeChecker() {
     const [text, setText] = useState("");
@@ -60,8 +60,7 @@ export default function PalindromeChecker() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -80,7 +79,7 @@ export default function PalindromeChecker() {
                             : `${text} is not a palindrome`}
                     </Typography>
                 )}
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

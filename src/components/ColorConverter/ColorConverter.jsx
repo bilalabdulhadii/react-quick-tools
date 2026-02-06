@@ -5,13 +5,13 @@ import {
     Typography,
     InputAdornment,
     Grid,
-    Paper,
     Stack,
     Button,
     IconButton,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function ColorConverter({ type }) {
     const { showTimedToast } = useToast();
@@ -341,8 +341,7 @@ export default function ColorConverter({ type }) {
                 </Box>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",

@@ -3,12 +3,12 @@ import {
     Box,
     TextField,
     Typography,
-    Paper,
     Button,
     Stack,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function TextCaseConverter({ caseType }) {
     const [text, setText] = useState("");
@@ -120,8 +120,7 @@ export default function TextCaseConverter({ caseType }) {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -134,7 +133,7 @@ export default function TextCaseConverter({ caseType }) {
                 >
                     {convertText(text)}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

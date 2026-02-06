@@ -2,12 +2,12 @@ import { useMemo, useState } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     FormControlLabel,
     Checkbox,
     Stack,
 } from "@mui/material";
+import ToolCard from "../ToolCard";
 
 export default function TextCounter() {
     const [text, setText] = useState("");
@@ -73,8 +73,7 @@ export default function TextCounter() {
                 label="Exclude spaces from character count"
             />
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                 }}
@@ -146,7 +145,7 @@ export default function TextCounter() {
                         </Box>
                     </Stack>
                 </Box>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

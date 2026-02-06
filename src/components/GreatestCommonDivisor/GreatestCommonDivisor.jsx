@@ -2,13 +2,13 @@ import { useState } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function GreatestCommonDivisor() {
     const [num1, setNum1] = useState("");
@@ -82,8 +82,7 @@ export default function GreatestCommonDivisor() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -92,7 +91,7 @@ export default function GreatestCommonDivisor() {
                 <Typography variant="h5" sx={{ margin: "15px" }}>
                     {gcd !== null ? `GCD: ${gcd}` : ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

@@ -5,8 +5,8 @@ import {
     Typography,
     Box,
     Stack,
-    Paper,
 } from "@mui/material";
+import ToolCard from "../ToolCard";
 
 export default function RandomDraw() {
     const [total, setTotal] = useState(10);
@@ -75,8 +75,7 @@ export default function RandomDraw() {
                 {numbers.length > 0 && <></>}
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "200px",
@@ -102,7 +101,7 @@ export default function RandomDraw() {
                         )}
                     </Box>
                 </Box>
-            </Paper>
+            </ToolCard>
 
             <Box mb={2}>
                 <Typography variant="h6" color="text.primary">

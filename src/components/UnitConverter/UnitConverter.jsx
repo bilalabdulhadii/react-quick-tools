@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
@@ -15,6 +14,7 @@ import {
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 const conversionOptions = {
     length: [
@@ -203,8 +203,7 @@ export default function UnitConverter({ unitType }) {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{
                     width: "100%",
                     minHeight: "300px",
@@ -217,7 +216,7 @@ export default function UnitConverter({ unitType }) {
                           }`
                         : ""}
                 </Typography>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }

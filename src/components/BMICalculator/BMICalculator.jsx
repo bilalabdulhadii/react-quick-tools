@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import {
     Box,
     TextField,
-    Paper,
     Typography,
     Button,
     Stack,
@@ -11,6 +10,7 @@ import {
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useToast } from "../../contexts/ToastContext";
+import ToolCard from "../ToolCard";
 
 export default function BMICalculator() {
     const [weight, setWeight] = useState("");
@@ -116,8 +116,7 @@ export default function BMICalculator() {
                 </Button>
             </Stack>
 
-            <Paper
-                variant="outlined"
+            <ToolCard
                 sx={{ width: "100%", minHeight: "300px", overflowY: "auto" }}
             >
                 <Box sx={{ margin: "15px" }}>
@@ -134,7 +133,7 @@ export default function BMICalculator() {
                         </Typography>
                     )}
                 </Box>
-            </Paper>
+            </ToolCard>
         </Box>
     );
 }
