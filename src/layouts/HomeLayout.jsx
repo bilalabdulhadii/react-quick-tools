@@ -21,7 +21,11 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import LogoBlack from "../assets/logo_black.png";
 import LogoWhite from "../assets/logo_white.png";
-import { formatGroupTitle, getToolHref } from "../utils/tools";
+import {
+    formatGroupTitle,
+    getToolHref,
+    groupToolsByGroup,
+} from "../utils/tools";
 
 export default function HomeLayout({ setThemeMode }) {
     const theme = useTheme();
@@ -30,6 +34,16 @@ export default function HomeLayout({ setThemeMode }) {
     const navigate = useNavigate();
     const githubUrl = "https://github.com/bilalabdulhadii/react-quick-tools";
     const logoSrc = theme.palette.mode === "dark" ? LogoWhite : LogoBlack;
+    const activeTools = toolsList.filter((tool) => tool.isActive);
+    const generalTools = activeTools.filter((tool) => !tool.group);
+    const groupedTools = groupToolsByGroup(activeTools);
+    const groupOrder = Array.from(
+        new Set(
+            activeTools
+                .filter((tool) => tool.group)
+                .map((tool) => tool.group)
+        )
+    );
 
     const parts = location.pathname.split("/").filter(Boolean);
     const [groupSegment, toolSegment] = parts;
@@ -62,72 +76,172 @@ export default function HomeLayout({ setThemeMode }) {
             onKeyDown={toggleDrawer(false)}
             sx={{
                 maxWidth: "100%",
+                height: "100vh",
                 p: 3,
                 boxSizing: "border-box",
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
             }}>
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    position: "sticky",
+                    top: 0,
+                    zIndex: 1,
+                    backdropFilter: "blur(14px)",
+                    background: "var(--app-surface)",
+                    border: "1px solid",
+                    borderColor: "var(--app-border)",
+                    borderRadius: "16px",
+                    padding: "10px 12px",
                 }}>
-                <Typography
-                    sx={{
-                        fontWeight: "bold",
-                        fontSize: "1.2rem",
-                        mb: 2,
-                    }}>
-                    Quick Tools
-                </Typography>
+                <Box>
+                    <Typography
+                        sx={{
+                            fontWeight: 800,
+                            fontSize: "1.1rem",
+                            letterSpacing: "-0.02em",
+                        }}>
+                        Quick Tools
+                    </Typography>
+                    <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ display: "block" }}>
+                        All utilities in one place
+                    </Typography>
+                </Box>
                 <IconButton onClick={toggleDrawer(false)}>
                     <CloseRoundedIcon />
                 </IconButton>
             </Box>
 
-            <Grid container spacing={1.5}>
-                {toolsList
-                    .filter((tool) => tool.isActive)
-                    .map((tool) => {
-                        const linkPath = getToolHref(tool);
+            <Box
+                sx={{
+                    flex: 1,
+                    overflowY: "auto",
+                    pr: 1,
+                    pb: 1,
+                }}>
+                {generalTools.length > 0 && (
+                    <Box sx={{ mb: 2 }}>
+                        <Typography
+                            variant="subtitle2"
+                            sx={{
+                                textTransform: "uppercase",
+                                letterSpacing: "0.12em",
+                                fontWeight: 700,
+                                color: "text.secondary",
+                                mb: 1,
+                            }}>
+                            General Tools
+                        </Typography>
+                        <Grid container spacing={1.5}>
+                            {generalTools.map((tool) => {
+                                const linkPath = getToolHref(tool);
 
-                        return (
-                            <Grid
-                                size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
-                                key={tool.id}>
-                                <Box
-                                    component={Link}
-                                    to={linkPath}
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "flex-start",
-                                        alignContent: "center",
-                                        gap: "8px",
-                                        textDecoration: "none",
-                                        padding: "6px 10px",
-                                        borderRadius: "999px",
-                                        border: "1px solid",
-                                        borderColor: "divider",
-                                        background:
-                                            "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0))",
-                                    }}>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.primary">
-                                        {tool.icon}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.primary"
-                                        sx={{
-                                            fontWeight: 500,
-                                        }}>
-                                        {tool.title}
-                                    </Typography>
-                                </Box>
-                            </Grid>
-                        );
-                    })}
-            </Grid>
+                                return (
+                                    <Grid
+                                        size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+                                        key={tool.id}>
+                                        <Box
+                                            component={Link}
+                                            to={linkPath}
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "flex-start",
+                                                alignContent: "center",
+                                                gap: "8px",
+                                                textDecoration: "none",
+                                                padding: "6px 10px",
+                                                borderRadius: "999px",
+                                                border: "1px solid",
+                                                borderColor: "divider",
+                                                background:
+                                                    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0))",
+                                            }}>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.primary">
+                                                {tool.icon}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.primary"
+                                                sx={{
+                                                    fontWeight: 500,
+                                                }}>
+                                                {tool.title}
+                                            </Typography>
+                                        </Box>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Box>
+                )}
+
+                {groupOrder.map((group) => (
+                    <Box key={group} sx={{ mb: 2 }}>
+                        <Typography
+                            variant="subtitle2"
+                            sx={{
+                                textTransform: "uppercase",
+                                letterSpacing: "0.12em",
+                                fontWeight: 700,
+                                color: "text.secondary",
+                                mb: 1,
+                            }}>
+                            {formatGroupTitle(group)}
+                        </Typography>
+                        <Grid container spacing={1.5}>
+                            {groupedTools[group]?.map((tool) => {
+                                const linkPath = getToolHref(tool);
+
+                                return (
+                                    <Grid
+                                        size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+                                        key={tool.id}>
+                                        <Box
+                                            component={Link}
+                                            to={linkPath}
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "flex-start",
+                                                alignContent: "center",
+                                                gap: "8px",
+                                                textDecoration: "none",
+                                                padding: "6px 10px",
+                                                borderRadius: "999px",
+                                                border: "1px solid",
+                                                borderColor: "divider",
+                                                background:
+                                                    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0))",
+                                            }}>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.primary">
+                                                {tool.icon}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.primary"
+                                                sx={{
+                                                    fontWeight: 500,
+                                                }}>
+                                                {tool.title}
+                                            </Typography>
+                                        </Box>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Box>
+                ))}
+            </Box>
         </Box>
     );
 
@@ -279,10 +393,14 @@ export default function HomeLayout({ setThemeMode }) {
                 onOpen={toggleDrawer(true)}
                 PaperProps={{
                     sx: {
-                        background: "var(--app-surface)",
+                        height: "100vh",
+                        background:
+                            "radial-gradient(120% 120% at 20% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0))",
+                        backgroundColor: "var(--app-surface)",
                         backdropFilter: "blur(18px)",
                         borderBottom: "1px solid",
                         borderColor: "var(--app-border)",
+                        boxShadow: "var(--app-shadow-strong)",
                     },
                 }}>
                 {drawerContent}
