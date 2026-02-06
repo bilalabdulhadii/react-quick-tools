@@ -252,32 +252,107 @@ export default function HomeLayout({ setThemeMode }) {
                 minHeight: "100vh",
                 background: "var(--app-bg)",
                 color: "var(--app-text)",
+                display: "flex",
+                flexDirection: "column",
             }}>
-            <Box>
-                <AppBar
-                    position="fixed"
-                    elevation={0}
+            <AppBar
+                position="fixed"
+                elevation={0}
+                sx={{
+                    background: "var(--app-bar-bg)",
+                    backdropFilter: "blur(14px)",
+                    borderBottom: "1px solid",
+                    borderColor: "var(--app-border)",
+                    color: "var(--app-text)",
+                }}>
+                <Toolbar
                     sx={{
-                        background: "var(--app-bar-bg)",
-                        backdropFilter: "blur(14px)",
-                        borderBottom: "1px solid",
-                        borderColor: "var(--app-border)",
-                        color: "var(--app-text)",
+                        minHeight: { xs: 64, sm: 72 },
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
                     }}>
-                    <Toolbar
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
                         sx={{
-                            minHeight: { xs: 64, sm: 72 },
+                            mr: 0,
+                            border: "1px solid",
+                            borderColor: "var(--app-border)",
+                            background: "var(--app-surface)",
+                            "&:hover": {
+                                background: "var(--app-card)",
+                            },
+                        }}
+                        onClick={toggleDrawer(true)}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Box
+                        onClick={() => navigate("/")}
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "10px",
+                            cursor: "pointer",
+                            paddingLeft: { xs: "6px", sm: "10px" },
+                        }}>
+                        <Avatar
+                            alt="Logo"
+                            src={logoSrc}
+                            sx={{
+                                width: 30,
+                                height: 30,
+                                boxShadow: "0 8px 20px rgba(0, 0, 0, 0.18)",
+                            }}
+                        />
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            sx={{
+                                userSelect: "none",
+                                textDecoration: "none",
+                                fontWeight: 700,
+                                letterSpacing: "-0.02em",
+                                maxWidth: { xs: 180, sm: 280, md: 420 },
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                            }}>
+                            {title}
+                        </Typography>
+                    </Box>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Box
+                        sx={{
                             display: "flex",
                             alignItems: "center",
                             gap: 1,
                         }}>
                         <IconButton
                             size="large"
-                            edge="start"
+                            aria-label="GitHub repository"
+                            component="a"
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             color="inherit"
-                            aria-label="menu"
                             sx={{
-                                mr: 0,
+                                border: "1px solid",
+                                borderColor: "var(--app-border)",
+                                background: "var(--app-surface)",
+                                "&:hover": {
+                                    background: "var(--app-card)",
+                                },
+                            }}>
+                            <GitHubIcon />
+                        </IconButton>
+                        <IconButton
+                            size="large"
+                            aria-label="toggle theme"
+                            color="inherit"
+                            sx={{
                                 border: "1px solid",
                                 borderColor: "var(--app-border)",
                                 background: "var(--app-surface)",
@@ -285,106 +360,33 @@ export default function HomeLayout({ setThemeMode }) {
                                     background: "var(--app-card)",
                                 },
                             }}
-                            onClick={toggleDrawer(true)}>
-                            <MenuIcon />
+                            onClick={() =>
+                                setThemeMode(theme.palette.mode !== "dark")
+                            }>
+                            {theme.palette.mode === "light" ? (
+                                <DarkModeIcon />
+                            ) : (
+                                <LightModeIcon />
+                            )}
                         </IconButton>
-                        <Box
-                            onClick={() => navigate("/")}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                gap: "10px",
-                                cursor: "pointer",
-                                paddingLeft: { xs: "6px", sm: "10px" },
-                            }}>
-                            <Avatar
-                                alt="Logo"
-                                src={logoSrc}
-                                sx={{
-                                    width: 30,
-                                    height: 30,
-                                    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.18)",
-                                }}
-                            />
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                sx={{
-                                    userSelect: "none",
-                                    textDecoration: "none",
-                                    fontWeight: 700,
-                                    letterSpacing: "-0.02em",
-                                    maxWidth: { xs: 180, sm: 280, md: 420 },
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                }}>
-                                {title}
-                            </Typography>
-                        </Box>
-                        <Box sx={{ flexGrow: 1 }} />
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 1,
-                            }}>
-                            <IconButton
-                                size="large"
-                                aria-label="GitHub repository"
-                                component="a"
-                                href={githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                color="inherit"
-                                sx={{
-                                    border: "1px solid",
-                                    borderColor: "var(--app-border)",
-                                    background: "var(--app-surface)",
-                                    "&:hover": {
-                                        background: "var(--app-card)",
-                                    },
-                                }}>
-                                <GitHubIcon />
-                            </IconButton>
-                            <IconButton
-                                size="large"
-                                aria-label="toggle theme"
-                                color="inherit"
-                                sx={{
-                                    border: "1px solid",
-                                    borderColor: "var(--app-border)",
-                                    background: "var(--app-surface)",
-                                    "&:hover": {
-                                        background: "var(--app-card)",
-                                    },
-                                }}
-                                onClick={() =>
-                                    setThemeMode(theme.palette.mode !== "dark")
-                                }>
-                                {theme.palette.mode === "light" ? (
-                                    <DarkModeIcon />
-                                ) : (
-                                    <LightModeIcon />
-                                )}
-                            </IconButton>
-                        </Box>
-                    </Toolbar>
-                </AppBar>
+                    </Box>
+                </Toolbar>
+            </AppBar>
 
-                <Toolbar sx={{ minHeight: { xs: 64, sm: 72 } }} />
+            <Toolbar sx={{ minHeight: { xs: 64, sm: 72 } }} />
 
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
                 <Container
                     maxWidth="lg"
                     sx={{
                         paddingTop: { xs: 4, sm: 6 },
                         paddingBottom: { xs: 8, sm: 12 },
-                        minHeight: "70vh",
+                        flex: 1,
                     }}>
                     <Outlet />
                 </Container>
-                <Footer />
             </Box>
+            <Footer />
 
             <SwipeableDrawer
                 anchor="top"
