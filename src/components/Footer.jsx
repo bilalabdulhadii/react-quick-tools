@@ -5,14 +5,14 @@ export default function Footer() {
         <Box
             component="footer"
             sx={{
-                backgroundColor: (theme) => theme.palette.background.paper,
+                background: "var(--app-surface)",
                 textAlign: "center",
-                padding: "10px 10px",
+                padding: "14px 10px",
                 mt: "auto",
                 borderTop: "1px solid",
-                borderColor: "divider",
-                height: "60px",
+                borderColor: "var(--app-border)",
                 boxSizing: "border-box",
+                backdropFilter: "blur(10px)",
             }}
         >
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>

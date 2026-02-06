@@ -23,7 +23,7 @@ import RockPaperScissors from "./components/RockPaperScissors/RockPaperScissors"
 import Notes from "./components/NotesTool/Notes";
 
 const toolsList = [
-    // Basic calculator
+    // General tools
     {
         id: "calculator",
         title: "Basic Calculator",
@@ -33,30 +33,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Age calculator
-    {
-        id: "age-calculator",
-        title: "Age Calculator",
-        path: "age-calculator",
-        component: <AgeCalculator />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        isActive: true,
-    },
-
-    // BMI calculator
-    {
-        id: "bmi-calculator",
-        title: "BMI Calculator",
-        path: "bmi-calculator",
-        component: <BMICalculator />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        isActive: true,
-    },
-
-    // Notes
     {
         id: "notes",
         title: "Notes",
@@ -66,8 +42,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Text counter
     {
         id: "text-counter",
         title: "Text Counter",
@@ -77,8 +51,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Space remover
     {
         id: "space-remover",
         title: "Space Remover",
@@ -88,8 +60,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Text reverser
     {
         id: "text-reverser",
         title: "Text Reverser",
@@ -99,41 +69,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Palindrome checker
-    {
-        id: "palindrome-checker",
-        title: "Palindrome Checker",
-        path: "palindrome-checker",
-        component: <PalindromeChecker />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        isActive: true,
-    },
-
-    // Password generator
-    {
-        id: "password-generator",
-        title: "Password Generator",
-        path: "password-generator",
-        component: <PasswordGenerator />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        isActive: true,
-    },
-
-    // Password strength checker
-    {
-        id: "password-strength-checker",
-        title: "Password Strength Checker",
-        path: "password-strength-checker",
-        component: <PasswordStrengthChecker />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        isActive: true,
-    },
-
-    // Lorem ipsum generator
     {
         id: "lorem-ipsum-generator",
         title: "Lorem Ipsum Generator",
@@ -143,8 +78,51 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // Random draw
+    {
+        id: "password-generator",
+        title: "Password Generator",
+        path: "password-generator",
+        component: <PasswordGenerator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+    {
+        id: "password-strength-checker",
+        title: "Password Strength Checker",
+        path: "password-strength-checker",
+        component: <PasswordStrengthChecker />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+    {
+        id: "age-calculator",
+        title: "Age Calculator",
+        path: "age-calculator",
+        component: <AgeCalculator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+    {
+        id: "bmi-calculator",
+        title: "BMI Calculator",
+        path: "bmi-calculator",
+        component: <BMICalculator />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
+    {
+        id: "palindrome-checker",
+        title: "Palindrome Checker",
+        path: "palindrome-checker",
+        component: <PalindromeChecker />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        isActive: true,
+    },
     {
         id: "random-draw",
         title: "Random Draw",
@@ -154,8 +132,6 @@ const toolsList = [
         description: "",
         isActive: true,
     },
-
-    // RockPaperScissors
     {
         id: "rock-paper-scissors",
         title: "Rock Paper Scissors",
@@ -228,80 +204,6 @@ const toolsList = [
         isActive: true,
     },
 
-    // Number system converters
-    {
-        id: "binary-converter",
-        title: "Binary Converter",
-        path: "binary-converter",
-        component: <NumberSystemConverter numberSystem="binary" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "number-system",
-        isActive: true,
-    },
-    {
-        id: "octal-converter",
-        title: "Octal Converter",
-        path: "octal-converter",
-        component: <NumberSystemConverter numberSystem="octal" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "number-system",
-        isActive: true,
-    },
-    {
-        id: "decimal-converter",
-        title: "Decimal Converter",
-        path: "decimal-converter",
-        component: <NumberSystemConverter numberSystem="decimal" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "number-system",
-        isActive: true,
-    },
-    {
-        id: "hexadecimal-converter",
-        title: "Hexadecimal Converter",
-        path: "hexadecimal-converter",
-        component: <NumberSystemConverter numberSystem="hexadecimal" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "number-system",
-        isActive: true,
-    },
-
-    // Color converter tools
-    {
-        id: "hex-converter",
-        title: "HEX Converter",
-        path: "hex-converter",
-        component: <ColorConverter type="hex" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "color-converter",
-        isActive: true,
-    },
-    {
-        id: "rgb-converter",
-        title: "RGB Converter",
-        path: "rgb-converter",
-        component: <ColorConverter type="rgb" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "color-converter",
-        isActive: true,
-    },
-    {
-        id: "hsl-converter",
-        title: "HSL Converter",
-        path: "hsl-converter",
-        component: <ColorConverter type="hsl" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "color-converter",
-        isActive: true,
-    },
-
     // Unit Converter tools
     {
         id: "length-converter",
@@ -324,6 +226,16 @@ const toolsList = [
         isActive: true,
     },
     {
+        id: "temperature-converter",
+        title: "Temperature Converter",
+        path: "temperature-converter",
+        component: <UnitConverter unitType="temperature" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "unit-converter",
+        isActive: true,
+    },
+    {
         id: "volume-converter",
         title: "Volume Converter",
         path: "volume-converter",
@@ -334,10 +246,10 @@ const toolsList = [
         isActive: true,
     },
     {
-        id: "temperature-converter",
-        title: "Temperature Converter",
-        path: "temperature-converter",
-        component: <UnitConverter unitType="temperature" />,
+        id: "area-converter",
+        title: "Area Converter",
+        path: "area-converter",
+        component: <UnitConverter unitType="area" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         group: "unit-converter",
@@ -393,43 +305,87 @@ const toolsList = [
         group: "unit-converter",
         isActive: true,
     },
+
+    // Number system converters
     {
-        id: "area-converter",
-        title: "Area Converter",
-        path: "area-converter",
-        component: <UnitConverter unitType="area" />,
+        id: "decimal-converter",
+        title: "Decimal Converter",
+        path: "decimal-converter",
+        component: <NumberSystemConverter numberSystem="decimal" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
-        group: "unit-converter",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "binary-converter",
+        title: "Binary Converter",
+        path: "binary-converter",
+        component: <NumberSystemConverter numberSystem="binary" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "hexadecimal-converter",
+        title: "Hexadecimal Converter",
+        path: "hexadecimal-converter",
+        component: <NumberSystemConverter numberSystem="hexadecimal" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+    {
+        id: "octal-converter",
+        title: "Octal Converter",
+        path: "octal-converter",
+        component: <NumberSystemConverter numberSystem="octal" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "number-system",
+        isActive: true,
+    },
+
+    // Color converter tools
+    {
+        id: "hex-converter",
+        title: "HEX Converter",
+        path: "hex-converter",
+        component: <ColorConverter type="hex" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
+        isActive: true,
+    },
+    {
+        id: "rgb-converter",
+        title: "RGB Converter",
+        path: "rgb-converter",
+        component: <ColorConverter type="rgb" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
+        isActive: true,
+    },
+    {
+        id: "hsl-converter",
+        title: "HSL Converter",
+        path: "hsl-converter",
+        component: <ColorConverter type="hsl" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "color-converter",
         isActive: true,
     },
 
     // Text case tools
     {
-        id: "uppercase",
-        title: "Uppercase",
-        path: "uppercase",
-        component: <TextCaseConverter caseType="uppercase" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "text-case",
-        isActive: true,
-    },
-    {
-        id: "lowercase",
-        title: "Lowercase",
-        path: "lowercase",
-        component: <TextCaseConverter caseType="lowercase" />,
-        icon: <KeyboardArrowRightOutlinedIcon />,
-        description: "",
-        group: "text-case",
-        isActive: true,
-    },
-    {
-        id: "capitalize",
-        title: "Capitalize",
-        path: "capitalize",
-        component: <TextCaseConverter caseType="capitalize" />,
+        id: "sentence-case",
+        title: "Sentence Case",
+        path: "sentence-case",
+        component: <TextCaseConverter caseType="sentence-case" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         group: "text-case",
@@ -446,10 +402,30 @@ const toolsList = [
         isActive: true,
     },
     {
-        id: "sentence-case",
-        title: "Sentence Case",
-        path: "sentence-case",
-        component: <TextCaseConverter caseType="sentence-case" />,
+        id: "capitalize",
+        title: "Capitalize",
+        path: "capitalize",
+        component: <TextCaseConverter caseType="capitalize" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "text-case",
+        isActive: true,
+    },
+    {
+        id: "uppercase",
+        title: "Uppercase",
+        path: "uppercase",
+        component: <TextCaseConverter caseType="uppercase" />,
+        icon: <KeyboardArrowRightOutlinedIcon />,
+        description: "",
+        group: "text-case",
+        isActive: true,
+    },
+    {
+        id: "lowercase",
+        title: "Lowercase",
+        path: "lowercase",
+        component: <TextCaseConverter caseType="lowercase" />,
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         group: "text-case",
@@ -499,7 +475,9 @@ const toolsList = [
         id: "screaming-snake-case",
         title: "Screaming Snake Case",
         path: "screaming-snake-case",
-        component: <TextCaseConverter caseType="screaming-snake-case" />,
+        component: (
+            <TextCaseConverter caseType="screaming-snake-case" />
+        ),
         icon: <KeyboardArrowRightOutlinedIcon />,
         description: "",
         group: "text-case",

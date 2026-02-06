@@ -1,21 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+    --font-display: "Fraunces", serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
+    --app-bg: radial-gradient(
+        120% 120% at 10% 0%,
+        #f7efe4 0%,
+        #eef6ff 45%,
+        #f7f5f1 100%
+    );
+    --app-bg-solid: #ffffff;
+    --app-surface: rgba(255, 255, 255, 0.86);
+    --app-card: rgba(255, 255, 255, 0.94);
+    --app-border: rgba(15, 23, 42, 0.12);
+    --app-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    --app-shadow-strong: 0 20px 40px rgba(15, 23, 42, 0.14);
+    --app-text: #1f2937;
+    --app-muted: #6b7280;
+    --app-bar-bg: rgba(255, 255, 255, 0.82);
+    --app-accent: #f97316;
+    --app-accent-strong: #1d3b5f;
+}
+
+html[data-theme="dark"] {
+    --app-bg: radial-gradient(
+        120% 120% at 10% 0%,
+        #1c2a3a 0%,
+        #0c1118 55%,
+        #0f141d 100%
+    );
+    --app-bg-solid: #0f141d;
+    --app-surface: rgba(15, 23, 42, 0.82);
+    --app-card: rgba(17, 24, 39, 0.9);
+    --app-border: rgba(148, 163, 184, 0.18);
+    --app-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+    --app-shadow-strong: 0 26px 46px rgba(0, 0, 0, 0.55);
+    --app-text: #e2e8f0;
+    --app-muted: #94a3b8;
+    --app-bar-bg: rgba(15, 23, 42, 0.86);
+    --app-accent: #f59e0b;
+    --app-accent-strong: #4aa8ff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+html {
+    background: var(--app-bg);
+    background-color: var(--app-bg-solid);
+}
+
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
+    font-family: var(--font-body);
+    background: var(--app-bg);
+    background-color: var(--app-bg-solid);
+    color: var(--app-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-family: var(--font-mono);
 }
 
-* {
-    margin: 0;
-    padding: 0;
+a {
+    color: inherit;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.28);
+    border-radius: 12px;
 }

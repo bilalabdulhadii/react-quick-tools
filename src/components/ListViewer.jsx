@@ -1,5 +1,6 @@
 import { Grid, Typography, Stack, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import { formatGroupTitle, getToolHref } from "../utils/tools";
 
 export default function ListViewer({ toolsList }) {
     const groupedTools = toolsList.reduce((acc, tool) => {
@@ -14,31 +15,26 @@ export default function ListViewer({ toolsList }) {
             {Object.entries(groupedTools).map(([group, tools]) => (
                 <div key={group}>
                     <Typography
-                        variant="h5"
+                        variant="h4"
                         color="text.primary"
-                        sx={{ mb: 2 }}
+                        sx={{
+                            mb: 2,
+                            fontWeight: 700,
+                            letterSpacing: "-0.02em",
+                        }}
                     >
                         {group === "Other"
                             ? "General Tools"
-                            : group
-                                  .split("-")
-                                  .map(
-                                      (word) =>
-                                          word.charAt(0).toUpperCase() +
-                                          word.slice(1).toLowerCase()
-                                  )
-                                  .join(" ")}
+                            : formatGroupTitle(group)}
                     </Typography>
 
                     <Grid container spacing={3}>
-                        {tools.map((tool) => {
-                            const linkPath = tool.group
-                                ? `${tool.group}/${tool.path}`
-                                : tool.path;
+                        {tools.map((tool, index) => {
+                            const linkPath = getToolHref(tool);
 
                             return (
                                 <Grid
-                                    size={{ xs: 6, sm: 4, md: 4, lg: 3 }}
+                                    size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
                                     key={tool.id}
                                 >
                                     <Box
@@ -48,57 +44,79 @@ export default function ListViewer({ toolsList }) {
                                             flexDirection: "column",
                                             justifyContent: "space-between",
                                             textAlign: "center",
-                                            transition: "0.3s",
-                                            boxShadow: 1,
-                                            bgcolor: (theme) =>
-                                                theme.palette.background.paper,
-                                            borderRadius: "12px",
+                                            transition:
+                                                "transform 200ms ease, box-shadow 200ms ease",
+                                            boxShadow: "var(--app-shadow)",
+                                            background: "var(--app-card)",
+                                            border: "1px solid",
+                                            borderColor: "var(--app-border)",
+                                            borderRadius: "16px",
+                                            overflow: "hidden",
+                                            position: "relative",
                                             "&:hover": {
                                                 transform: "translateY(-3px)",
-                                                boxShadow: 3,
+                                                boxShadow:
+                                                    "var(--app-shadow-strong)",
                                             },
+                                            "&::before": {
+                                                content: '""',
+                                                position: "absolute",
+                                                inset: 0,
+                                                background:
+                                                    "radial-gradient(80% 80% at 0% 0%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0))",
+                                                opacity: 0,
+                                                transition: "opacity 200ms ease",
+                                                pointerEvents: "none",
+                                            },
+                                            "&:hover::before": {
+                                                opacity: 1,
+                                            },
+                                            animation: "fadeUp 520ms ease both",
+                                            animationDelay: `${index * 40}ms`,
                                         }}
                                     >
                                         <Stack
                                             component={Link}
-                                            to={`/${linkPath}`}
+                                            to={linkPath}
                                             spacing={1}
                                             sx={{
-                                                padding: "10px",
+                                                padding: "14px",
                                                 textDecoration: "none",
+                                                position: "relative",
+                                                zIndex: 1,
                                             }}
                                         >
                                             <Box
                                                 sx={{
                                                     display: "flex",
                                                     textAlign: "left",
+                                                    alignItems: "center",
+                                                    gap: "8px",
                                                 }}
                                             >
                                                 <Typography
-                                                    variant="body2"
-                                                    color="primary"
+                                                    variant="body1"
+                                                    color="text.primary"
+                                                    sx={{ fontWeight: 600 }}
                                                 >
                                                     {tool.icon}
                                                 </Typography>
                                                 <Typography
-                                                    variant="body2"
-                                                    color="primary"
-                                                    sx={{
-                                                        textDecoration:
-                                                            "underline",
-                                                    }}
+                                                    variant="body1"
+                                                    color="text.primary"
+                                                    sx={{ fontWeight: 600 }}
                                                 >
                                                     {tool.title}
                                                 </Typography>
                                             </Box>
-                                            {/* {tool.description && (
+                                            {tool.description && (
                                                 <Typography
                                                     variant="body2"
                                                     color="text.secondary"
                                                 >
                                                     {tool.description}
                                                 </Typography>
-                                            )} */}
+                                            )}
                                         </Stack>
                                     </Box>
                                 </Grid>

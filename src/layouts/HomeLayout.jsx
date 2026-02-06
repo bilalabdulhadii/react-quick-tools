@@ -10,25 +10,41 @@ import {
     Grid,
     Avatar,
 } from "@mui/material";
-import { useTheme } from "@emotion/react";
+import { useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import toolsList from "../toolsList";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import Logo from "../assets/logo.png";
+import LogoBlack from "../assets/logo_black.png";
+import LogoWhite from "../assets/logo_white.png";
+import { formatGroupTitle, getToolHref } from "../utils/tools";
 
 export default function HomeLayout({ setThemeMode }) {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+    const githubUrl = "https://github.com/bilalabdulhadii/react-quick-tools";
+    const logoSrc = theme.palette.mode === "dark" ? LogoWhite : LogoBlack;
 
     const parts = location.pathname.split("/").filter(Boolean);
-    const lastPart = parts.length > 0 ? parts[parts.length - 1] : "";
-    const matchedTool = toolsList.find((tool) => tool.path === lastPart);
-    const title = matchedTool ? matchedTool.title : "Quick Tools";
+    const [groupSegment, toolSegment] = parts;
+    const matchedTool = toolsList.find((tool) => {
+        if (tool.group) {
+            return tool.group === groupSegment && tool.path === toolSegment;
+        }
+        return tool.path === groupSegment && !toolSegment;
+    });
+    const groupTitle = (() => {
+        if (!groupSegment || toolSegment) return "";
+        const hasGroup = toolsList.some((tool) => tool.group === groupSegment);
+        return hasGroup ? formatGroupTitle(groupSegment) : "";
+    })();
+    const title = matchedTool ? matchedTool.title : groupTitle || "Quick Tools";
 
     const toggleDrawer = (open) => (event) => {
         if (
@@ -48,22 +64,19 @@ export default function HomeLayout({ setThemeMode }) {
                 maxWidth: "100%",
                 p: 3,
                 boxSizing: "border-box",
-            }}
-        >
+            }}>
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                }}
-            >
+                }}>
                 <Typography
                     sx={{
                         fontWeight: "bold",
                         fontSize: "1.2rem",
                         mb: 2,
-                    }}
-                >
+                    }}>
                     Quick Tools
                 </Typography>
                 <IconButton onClick={toggleDrawer(false)}>
@@ -71,19 +84,16 @@ export default function HomeLayout({ setThemeMode }) {
                 </IconButton>
             </Box>
 
-            <Grid container spacing={1}>
+            <Grid container spacing={1.5}>
                 {toolsList
                     .filter((tool) => tool.isActive)
                     .map((tool) => {
-                        const linkPath = tool.group
-                            ? `${tool.group}/${tool.path}`
-                            : tool.path;
+                        const linkPath = getToolHref(tool);
 
                         return (
                             <Grid
                                 size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
-                                key={tool.id}
-                            >
+                                key={tool.id}>
                                 <Box
                                     component={Link}
                                     to={linkPath}
@@ -91,23 +101,26 @@ export default function HomeLayout({ setThemeMode }) {
                                         display: "flex",
                                         justifyContent: "flex-start",
                                         alignContent: "center",
-                                        gap: "5px",
+                                        gap: "8px",
                                         textDecoration: "none",
-                                    }}
-                                >
+                                        padding: "6px 10px",
+                                        borderRadius: "999px",
+                                        border: "1px solid",
+                                        borderColor: "divider",
+                                        background:
+                                            "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0))",
+                                    }}>
                                     <Typography
                                         variant="body2"
-                                        color="text.secondary"
-                                    >
+                                        color="text.primary">
                                         {tool.icon}
                                     </Typography>
                                     <Typography
                                         variant="body2"
-                                        color="text.secondary"
+                                        color="text.primary"
                                         sx={{
-                                            textDecoration: "underline",
-                                        }}
-                                    >
+                                            fontWeight: 500,
+                                        }}>
                                         {tool.title}
                                     </Typography>
                                 </Box>
@@ -123,81 +136,137 @@ export default function HomeLayout({ setThemeMode }) {
             sx={{
                 width: "100%",
                 minHeight: "100vh",
-                bgcolor: (theme) => theme.palette.background.default,
-            }}
-        >
+                background: "var(--app-bg)",
+                color: "var(--app-text)",
+            }}>
             <Box>
-                <Container
-                    maxWidth="md"
+                <AppBar
+                    position="fixed"
+                    elevation={0}
                     sx={{
-                        marginTop: "150px",
-                        marginBottom: "150px",
-                        minHeight: "75vh",
-                    }}
-                >
-                    <AppBar position="fixed">
-                        <Toolbar
+                        background: "var(--app-bar-bg)",
+                        backdropFilter: "blur(14px)",
+                        borderBottom: "1px solid",
+                        borderColor: "var(--app-border)",
+                        color: "var(--app-text)",
+                    }}>
+                    <Toolbar
+                        sx={{
+                            minHeight: { xs: 64, sm: 72 },
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                        }}>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
                             sx={{
-                                bgcolor: (theme) => theme.palette.primary.main,
+                                mr: 0,
+                                border: "1px solid",
+                                borderColor: "var(--app-border)",
+                                background: "var(--app-surface)",
+                                "&:hover": {
+                                    background: "var(--app-card)",
+                                },
                             }}
-                        >
-                            <IconButton
-                                size="large"
-                                edge="start"
-                                color="inherit"
-                                aria-label="menu"
-                                sx={{ mr: 2 }}
-                                onClick={toggleDrawer(true)}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Box
-                                onClick={() => (window.location.href = "/")}
+                            onClick={toggleDrawer(true)}>
+                            <MenuIcon />
+                        </IconButton>
+                        <Box
+                            onClick={() => navigate("/")}
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: "10px",
+                                cursor: "pointer",
+                                paddingLeft: { xs: "6px", sm: "10px" },
+                            }}>
+                            <Avatar
+                                alt="Logo"
+                                src={logoSrc}
                                 sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    gap: "5px",
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <Avatar
-                                    alt="Logo"
-                                    src={Logo}
-                                    sx={{ width: 28, height: 28 }}
-                                />
-                                <Typography
-                                    variant="h5"
-                                    sx={{
-                                        userSelect: "none",
-                                        textDecoration: "none",
-                                        color: "#ffffff",
-                                    }}
-                                >
-                                    {title}
-                                </Typography>
-                            </Box>
-                            <Box
-                                sx={{
-                                    flexGrow: 1,
+                                    width: 30,
+                                    height: 30,
+                                    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.18)",
                                 }}
                             />
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                sx={{
+                                    userSelect: "none",
+                                    textDecoration: "none",
+                                    fontWeight: 700,
+                                    letterSpacing: "-0.02em",
+                                    maxWidth: { xs: 180, sm: 280, md: 420 },
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                }}>
+                                {title}
+                            </Typography>
+                        </Box>
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
+                            }}>
                             <IconButton
                                 size="large"
-                                aria-label="show 17 new notifications"
-                                color="secondary"
+                                aria-label="GitHub repository"
+                                component="a"
+                                href={githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                color="inherit"
+                                sx={{
+                                    border: "1px solid",
+                                    borderColor: "var(--app-border)",
+                                    background: "var(--app-surface)",
+                                    "&:hover": {
+                                        background: "var(--app-card)",
+                                    },
+                                }}>
+                                <GitHubIcon />
+                            </IconButton>
+                            <IconButton
+                                size="large"
+                                aria-label="toggle theme"
+                                color="inherit"
+                                sx={{
+                                    border: "1px solid",
+                                    borderColor: "var(--app-border)",
+                                    background: "var(--app-surface)",
+                                    "&:hover": {
+                                        background: "var(--app-card)",
+                                    },
+                                }}
                                 onClick={() =>
                                     setThemeMode(theme.palette.mode !== "dark")
-                                }
-                            >
+                                }>
                                 {theme.palette.mode === "light" ? (
                                     <DarkModeIcon />
                                 ) : (
                                     <LightModeIcon />
                                 )}
                             </IconButton>
-                        </Toolbar>
-                    </AppBar>
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+
+                <Toolbar sx={{ minHeight: { xs: 64, sm: 72 } }} />
+
+                <Container
+                    maxWidth="lg"
+                    sx={{
+                        paddingTop: { xs: 4, sm: 6 },
+                        paddingBottom: { xs: 8, sm: 12 },
+                        minHeight: "70vh",
+                    }}>
                     <Outlet />
                 </Container>
                 <Footer />
@@ -208,7 +277,14 @@ export default function HomeLayout({ setThemeMode }) {
                 open={open}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
-            >
+                PaperProps={{
+                    sx: {
+                        background: "var(--app-surface)",
+                        backdropFilter: "blur(18px)",
+                        borderBottom: "1px solid",
+                        borderColor: "var(--app-border)",
+                    },
+                }}>
                 {drawerContent}
             </SwipeableDrawer>
         </Box>

@@ -8,6 +8,12 @@ import ListViewer from "./components/ListViewer";
 import { useState, useEffect } from "react";
 import NotFound from "./components/NotFound";
 import { Box, CssBaseline } from "@mui/material";
+import { groupToolsByGroup } from "./utils/tools";
+
+const activeTools = toolsList.filter((tool) => tool.isActive);
+const standaloneTools = activeTools.filter((tool) => !tool.group);
+const groupedTools = groupToolsByGroup(activeTools);
+const groupedEntries = Object.entries(groupedTools);
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -33,8 +39,7 @@ function App() {
                 sx={{
                     width: "100%",
                     minHeight: "100vh",
-                    backgroundColor: (theme) =>
-                        theme.palette.background.default,
+                    background: "transparent",
                 }}
             >
                 <div className="App">
@@ -45,162 +50,36 @@ function App() {
                         >
                             <Route
                                 index
-                                element={<ListViewer toolsList={toolsList} />}
+                                element={<ListViewer toolsList={activeTools} />}
                             />
 
                             {/* Map simple top-level tools */}
-                            {toolsList
-                                .filter((tool) => tool.isActive && !tool.group)
-                                .map((tool) => (
+                            {standaloneTools.map((tool) => (
+                                <Route
+                                    key={tool.id}
+                                    path={tool.path}
+                                    element={tool.component}
+                                />
+                            ))}
+
+                            {/* Grouped tools */}
+                            {groupedEntries.map(([group, tools]) => (
+                                <Route key={group} path={group}>
                                     <Route
-                                        key={tool.id}
-                                        path={tool.path}
-                                        element={tool.component}
+                                        index
+                                        element={
+                                            <ListViewer toolsList={tools} />
+                                        }
                                     />
-                                ))}
-
-                            {/* Parent route for unit-converter tools */}
-                            <Route path="unit-converter">
-                                <Route
-                                    index
-                                    element={
-                                        <ListViewer
-                                            toolsList={toolsList.filter(
-                                                (tool) =>
-                                                    tool.group ===
-                                                    "unit-converter"
-                                            )}
-                                        />
-                                    }
-                                />
-                                {toolsList
-                                    .filter(
-                                        (tool) =>
-                                            tool.isActive &&
-                                            tool.group === "unit-converter"
-                                    )
-                                    .map((tool) => (
+                                    {tools.map((tool) => (
                                         <Route
                                             key={tool.id}
                                             path={tool.path}
                                             element={tool.component}
                                         />
                                     ))}
-                            </Route>
-
-                            {/* Parent route for math-tools tools */}
-                            <Route path="math-tools">
-                                <Route
-                                    index
-                                    element={
-                                        <ListViewer
-                                            toolsList={toolsList.filter(
-                                                (tool) =>
-                                                    tool.group === "math-tools"
-                                            )}
-                                        />
-                                    }
-                                />
-                                {toolsList
-                                    .filter(
-                                        (tool) =>
-                                            tool.isActive &&
-                                            tool.group === "math-tools"
-                                    )
-                                    .map((tool) => (
-                                        <Route
-                                            key={tool.id}
-                                            path={tool.path}
-                                            element={tool.component}
-                                        />
-                                    ))}
-                            </Route>
-
-                            {/* Parent route for number-system tools */}
-                            <Route path="number-system">
-                                <Route
-                                    index
-                                    element={
-                                        <ListViewer
-                                            toolsList={toolsList.filter(
-                                                (tool) =>
-                                                    tool.group ===
-                                                    "number-system"
-                                            )}
-                                        />
-                                    }
-                                />
-                                {toolsList
-                                    .filter(
-                                        (tool) =>
-                                            tool.isActive &&
-                                            tool.group === "number-system"
-                                    )
-                                    .map((tool) => (
-                                        <Route
-                                            key={tool.id}
-                                            path={tool.path}
-                                            element={tool.component}
-                                        />
-                                    ))}
-                            </Route>
-
-                            {/* Parent route for color-converter tools */}
-                            <Route path="color-converter">
-                                <Route
-                                    index
-                                    element={
-                                        <ListViewer
-                                            toolsList={toolsList.filter(
-                                                (tool) =>
-                                                    tool.group ===
-                                                    "color-converter"
-                                            )}
-                                        />
-                                    }
-                                />
-                                {toolsList
-                                    .filter(
-                                        (tool) =>
-                                            tool.isActive &&
-                                            tool.group === "color-converter"
-                                    )
-                                    .map((tool) => (
-                                        <Route
-                                            key={tool.id}
-                                            path={tool.path}
-                                            element={tool.component}
-                                        />
-                                    ))}
-                            </Route>
-
-                            {/* Parent route for text-case tools */}
-                            <Route path="text-case">
-                                <Route
-                                    index
-                                    element={
-                                        <ListViewer
-                                            toolsList={toolsList.filter(
-                                                (tool) =>
-                                                    tool.group === "text-case"
-                                            )}
-                                        />
-                                    }
-                                />
-                                {toolsList
-                                    .filter(
-                                        (tool) =>
-                                            tool.isActive &&
-                                            tool.group === "text-case"
-                                    )
-                                    .map((tool) => (
-                                        <Route
-                                            key={tool.id}
-                                            path={tool.path}
-                                            element={tool.component}
-                                        />
-                                    ))}
-                            </Route>
+                                </Route>
+                            ))}
                         </Route>
                         <Route path="*" element={<NotFound />} />
                     </Routes>

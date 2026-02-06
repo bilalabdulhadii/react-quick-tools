@@ -2,17 +2,48 @@ import { createTheme } from "@mui/material/styles";
 
 const sharedSettings = {
     typography: {
-        fontFamily: "Roboto, sans-serif",
+        fontFamily: '"Space Grotesk", "Segoe UI", sans-serif',
+        h1: {
+            fontFamily: '"Fraunces", serif',
+            fontWeight: 700,
+            letterSpacing: "-0.04em",
+        },
+        h2: {
+            fontFamily: '"Fraunces", serif',
+            fontWeight: 700,
+            letterSpacing: "-0.03em",
+        },
+        h3: {
+            fontFamily: '"Fraunces", serif',
+            fontWeight: 700,
+            letterSpacing: "-0.02em",
+        },
+        h4: {
+            fontWeight: 700,
+            letterSpacing: "-0.02em",
+        },
+        h5: {
+            fontWeight: 700,
+            letterSpacing: "-0.01em",
+        },
         button: {
             textTransform: "none",
             fontWeight: 600,
-            fontSize: "1.2rem",
+            fontSize: "1rem",
         },
     },
     shape: {
-        borderRadius: 12,
+        borderRadius: 16,
     },
     components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                body: {
+                    background: "var(--app-bg)",
+                    color: "var(--app-text)",
+                },
+            },
+        },
         MuiButton: {
             styleOverrides: {
                 root: {},
@@ -36,18 +67,18 @@ export const lightTheme = createTheme({
     palette: {
         mode: "light",
         primary: {
-            main: "#1976D2",
+            main: "#1d3b5f",
         },
         secondary: {
-            main: "#FF9800",
+            main: "#f97316",
         },
         background: {
-            default: "#F5F5F5",
-            paper: "#FFFFFF",
+            default: "#f6f1ea",
+            paper: "#ffffff",
         },
         text: {
-            primary: "#212121",
-            secondary: "#424242",
+            primary: "#1f2937",
+            secondary: "#4b5563",
         },
     },
     ...sharedSettings,
@@ -58,18 +89,18 @@ export const darkTheme = createTheme({
     palette: {
         mode: "dark",
         primary: {
-            main: "#1976D2",
+            main: "#4aa8ff",
         },
         secondary: {
-            main: "#FF9800",
+            main: "#f59e0b",
         },
         background: {
-            default: "#121212",
-            paper: "#1E1E1E",
+            default: "#0f141b",
+            paper: "#141a23",
         },
         text: {
-            primary: "#FFFFFF",
-            secondary: "#B0BEC5",
+            primary: "#e2e8f0",
+            secondary: "#94a3b8",
         },
     },
     ...sharedSettings,
